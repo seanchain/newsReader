@@ -77,24 +77,15 @@
     return [self getXTitles:20];
 }
 
+- (NSInteger)getWeekToday{
+    return 1; //今后从服务器端返回当日的星期identifier
+}
+
 - (NSArray*)getDateArray{
     NSMutableArray *dateary = [[NSMutableArray alloc] init];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSDate *date = [NSDate date];
-    [formatter setTimeStyle:NSDateFormatterMediumStyle];
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    NSInteger unitFlags = NSYearCalendarUnit |
-    NSMonthCalendarUnit |
-    NSDayCalendarUnit |
-    NSWeekdayCalendarUnit |
-    NSHourCalendarUnit |
-    NSMinuteCalendarUnit |
-    NSSecondCalendarUnit;
-    comps = [calendar components:unitFlags fromDate:date];
-    int week = (int)[comps week];
+    int week = (int)[self getWeekToday];
     for (int j = week - 4; j <= week; j ++) {
-        int weekday = (j + 8) % 7;
+        int weekday = (j + 7) % 7;
         switch (weekday) {
             case 1:
                 [dateary addObject:@"星期一"];
