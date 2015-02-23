@@ -26,14 +26,14 @@
 		77A86B811A942E510002EFDF /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7E1A942E510002EFDF /* news.png */; };
 		77A86B821A942E510002EFDF /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7F1A942E510002EFDF /* user.png */; };
 		77A86B851A9433A30002EFDF /* NewsContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86B841A9433A30002EFDF /* NewsContent.m */; };
-		77A86BC81A94BA3F0002EFDF /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BBD1A94BA3F0002EFDF /* UUBar.m */; };
-		77A86BC91A94BA3F0002EFDF /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BBF1A94BA3F0002EFDF /* UUBarChart.m */; };
-		77A86BCA1A94BA3F0002EFDF /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BC11A94BA3F0002EFDF /* UUChart.m */; };
-		77A86BCB1A94BA3F0002EFDF /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BC31A94BA3F0002EFDF /* UUChartLabel.m */; };
-		77A86BCC1A94BA3F0002EFDF /* UUColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BC51A94BA3F0002EFDF /* UUColor.m */; };
-		77A86BCD1A94BA3F0002EFDF /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BC71A94BA3F0002EFDF /* UULineChart.m */; };
 		77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BCF1A94BB380002EFDF /* TableViewCell.m */; };
 		77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A86BD11A94C14C0002EFDF /* TableViewCell.xib */; };
+		77CA91381A9B72C6004B6271 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912D1A9B72C6004B6271 /* UUBar.m */; };
+		77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912F1A9B72C6004B6271 /* UUBarChart.m */; };
+		77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA91311A9B72C6004B6271 /* UUChart.m */; };
+		77CA913B1A9B72C6004B6271 /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA91331A9B72C6004B6271 /* UUChartLabel.m */; };
+		77CA913C1A9B72C6004B6271 /* UUColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA91351A9B72C6004B6271 /* UUColor.m */; };
+		77CA913D1A9B72C6004B6271 /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA91371A9B72C6004B6271 /* UULineChart.m */; };
 		77DD62501A974AE700C1FEF4 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77DD624F1A974AE700C1FEF4 /* Background.jpg */; };
 /* End PBXBuildFile section */
 
@@ -81,21 +81,21 @@
 		77A86B7F1A942E510002EFDF /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		77A86B831A9433A30002EFDF /* NewsContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContent.h; sourceTree = "<group>"; };
 		77A86B841A9433A30002EFDF /* NewsContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContent.m; sourceTree = "<group>"; };
-		77A86BBC1A94BA3F0002EFDF /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
-		77A86BBD1A94BA3F0002EFDF /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
-		77A86BBE1A94BA3F0002EFDF /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
-		77A86BBF1A94BA3F0002EFDF /* UUBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBarChart.m; sourceTree = "<group>"; };
-		77A86BC01A94BA3F0002EFDF /* UUChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChart.h; sourceTree = "<group>"; };
-		77A86BC11A94BA3F0002EFDF /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChart.m; sourceTree = "<group>"; };
-		77A86BC21A94BA3F0002EFDF /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartLabel.h; sourceTree = "<group>"; };
-		77A86BC31A94BA3F0002EFDF /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartLabel.m; sourceTree = "<group>"; };
-		77A86BC41A94BA3F0002EFDF /* UUColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUColor.h; sourceTree = "<group>"; };
-		77A86BC51A94BA3F0002EFDF /* UUColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUColor.m; sourceTree = "<group>"; };
-		77A86BC61A94BA3F0002EFDF /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
-		77A86BC71A94BA3F0002EFDF /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
 		77A86BCE1A94BB380002EFDF /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		77A86BCF1A94BB380002EFDF /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		77A86BD11A94C14C0002EFDF /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		77CA912C1A9B72C6004B6271 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
+		77CA912D1A9B72C6004B6271 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
+		77CA912E1A9B72C6004B6271 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
+		77CA912F1A9B72C6004B6271 /* UUBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBarChart.m; sourceTree = "<group>"; };
+		77CA91301A9B72C6004B6271 /* UUChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChart.h; sourceTree = "<group>"; };
+		77CA91311A9B72C6004B6271 /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChart.m; sourceTree = "<group>"; };
+		77CA91321A9B72C6004B6271 /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartLabel.h; sourceTree = "<group>"; };
+		77CA91331A9B72C6004B6271 /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartLabel.m; sourceTree = "<group>"; };
+		77CA91341A9B72C6004B6271 /* UUColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUColor.h; sourceTree = "<group>"; };
+		77CA91351A9B72C6004B6271 /* UUColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUColor.m; sourceTree = "<group>"; };
+		77CA91361A9B72C6004B6271 /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
+		77CA91371A9B72C6004B6271 /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
 		77DD624F1A974AE700C1FEF4 /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,7 +138,7 @@
 		770A736B1A930EC30089A77B /* NewsReader */ = {
 			isa = PBXGroup;
 			children = (
-				77A86BBB1A94BA3F0002EFDF /* UUChart */,
+				77CA912B1A9B72C6004B6271 /* UUChart */,
 				770A739F1A9335CD0089A77B /* SKSplashView */,
 				770A73701A930EC30089A77B /* AppDelegate.h */,
 				770A73711A930EC30089A77B /* AppDelegate.m */,
@@ -209,21 +209,21 @@
 			path = SKSplashView;
 			sourceTree = "<group>";
 		};
-		77A86BBB1A94BA3F0002EFDF /* UUChart */ = {
+		77CA912B1A9B72C6004B6271 /* UUChart */ = {
 			isa = PBXGroup;
 			children = (
-				77A86BBC1A94BA3F0002EFDF /* UUBar.h */,
-				77A86BBD1A94BA3F0002EFDF /* UUBar.m */,
-				77A86BBE1A94BA3F0002EFDF /* UUBarChart.h */,
-				77A86BBF1A94BA3F0002EFDF /* UUBarChart.m */,
-				77A86BC01A94BA3F0002EFDF /* UUChart.h */,
-				77A86BC11A94BA3F0002EFDF /* UUChart.m */,
-				77A86BC21A94BA3F0002EFDF /* UUChartLabel.h */,
-				77A86BC31A94BA3F0002EFDF /* UUChartLabel.m */,
-				77A86BC41A94BA3F0002EFDF /* UUColor.h */,
-				77A86BC51A94BA3F0002EFDF /* UUColor.m */,
-				77A86BC61A94BA3F0002EFDF /* UULineChart.h */,
-				77A86BC71A94BA3F0002EFDF /* UULineChart.m */,
+				77CA912C1A9B72C6004B6271 /* UUBar.h */,
+				77CA912D1A9B72C6004B6271 /* UUBar.m */,
+				77CA912E1A9B72C6004B6271 /* UUBarChart.h */,
+				77CA912F1A9B72C6004B6271 /* UUBarChart.m */,
+				77CA91301A9B72C6004B6271 /* UUChart.h */,
+				77CA91311A9B72C6004B6271 /* UUChart.m */,
+				77CA91321A9B72C6004B6271 /* UUChartLabel.h */,
+				77CA91331A9B72C6004B6271 /* UUChartLabel.m */,
+				77CA91341A9B72C6004B6271 /* UUColor.h */,
+				77CA91351A9B72C6004B6271 /* UUColor.m */,
+				77CA91361A9B72C6004B6271 /* UULineChart.h */,
+				77CA91371A9B72C6004B6271 /* UULineChart.m */,
 			);
 			path = UUChart;
 			sourceTree = "<group>";
@@ -335,22 +335,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				770A73AA1A93442C0089A77B /* Func.m in Sources */,
+				77CA913C1A9B72C6004B6271 /* UUColor.m in Sources */,
 				770A73971A9312340089A77B /* LoginController.m in Sources */,
 				770A73781A930EC30089A77B /* SecondViewController.m in Sources */,
-				77A86BC91A94BA3F0002EFDF /* UUBarChart.m in Sources */,
+				77CA913D1A9B72C6004B6271 /* UULineChart.m in Sources */,
 				770A739E1A9328180089A77B /* RegisterController.m in Sources */,
 				77A86B851A9433A30002EFDF /* NewsContent.m in Sources */,
-				77A86BCB1A94BA3F0002EFDF /* UUChartLabel.m in Sources */,
-				77A86BCD1A94BA3F0002EFDF /* UULineChart.m in Sources */,
+				77CA913B1A9B72C6004B6271 /* UUChartLabel.m in Sources */,
 				770A73721A930EC30089A77B /* AppDelegate.m in Sources */,
 				770A73A41A9335CD0089A77B /* SKSplashIcon.m in Sources */,
 				77A86B601A939B130002EFDF /* ThirdViewController.m in Sources */,
+				77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */,
+				77CA91381A9B72C6004B6271 /* UUBar.m in Sources */,
 				770A73A51A9335CD0089A77B /* SKSplashView.m in Sources */,
-				77A86BC81A94BA3F0002EFDF /* UUBar.m in Sources */,
+				77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */,
 				77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */,
 				770A73751A930EC30089A77B /* FirstViewController.m in Sources */,
-				77A86BCC1A94BA3F0002EFDF /* UUColor.m in Sources */,
-				77A86BCA1A94BA3F0002EFDF /* UUChart.m in Sources */,
 				770A736F1A930EC30089A77B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

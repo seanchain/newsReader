@@ -12,6 +12,7 @@
 
 @implementation UULineChart
 
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -112,6 +113,7 @@
         [self addSubview:label];
     }
     
+    
     //画竖线
     for (int i=0; i<xLabels.count+1; i++) {
         CAShapeLayer *shapeLayer = [CAShapeLayer layer];
@@ -148,26 +150,9 @@
 -(void)strokeChart
 {
     for (int i=0; i<_yValues.count; i++) {
-        NSArray *childAry = _yValues[i];
+        NSMutableArray *childAry = _yValues[i];
         if (childAry.count==0) {
             return;
-        }
-        //获取最大最小位置
-        CGFloat max = [childAry[0] floatValue];
-        CGFloat min = [childAry[0] floatValue];
-        NSInteger max_i;
-        NSInteger min_i;
-        
-        for (int j=0; j<childAry.count; j++){
-            CGFloat num = [childAry[j] floatValue];
-            if (max<=num){
-                max = num;
-                max_i = j;
-            }
-            if (min>=num){
-                min = num;
-                min_i = j;
-            }
         }
         
         //划线
@@ -183,23 +168,9 @@
         CGFloat firstValue = [[childAry objectAtIndex:0] floatValue];
         CGFloat xPosition = (UUYLabelwidth + _xLabelWidth/2.0);
         CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*3;
-        
         float grade = ((float)firstValue-_yValueMin) / ((float)_yValueMax-_yValueMin);
        
         //第一个点
-        BOOL isShowMaxAndMinPoint = YES;
-        if (self.ShowMaxMinArray) {
-            if ([self.ShowMaxMinArray[i] intValue]>0) {
-                isShowMaxAndMinPoint = (max_i==0 || min_i==0)?NO:YES;
-            }else{
-                isShowMaxAndMinPoint = YES;
-            }
-        }
-        [self addPoint:CGPointMake(xPosition, chartCavanHeight - grade * chartCavanHeight+UULabelHeight)
-                 index:i
-                isShow:isShowMaxAndMinPoint
-                 value:firstValue];
-
         
         [progressline moveToPoint:CGPointMake(xPosition, chartCavanHeight - grade * chartCavanHeight+UULabelHeight)];
         [progressline setLineWidth:2.0];
@@ -207,29 +178,14 @@
         [progressline setLineJoinStyle:kCGLineJoinRound];
         NSInteger index = 0;
         for (NSString * valueString in childAry) {
-            
             float grade =([valueString floatValue]-_yValueMin) / ((float)_yValueMax-_yValueMin);
-            if (index != 0) {
-                
-                CGPoint point = CGPointMake(xPosition+index*_xLabelWidth, chartCavanHeight - grade * chartCavanHeight+UULabelHeight);
-                [progressline addLineToPoint:point];
-                
-                BOOL isShowMaxAndMinPoint = YES;
-                if (self.ShowMaxMinArray) {
-                    if ([self.ShowMaxMinArray[i] intValue]>0) {
-                        isShowMaxAndMinPoint = (max_i==index || min_i==index)?NO:YES;
-                    }else{
-                        isShowMaxAndMinPoint = YES;
-                    }
-                }
-                [progressline moveToPoint:point];
-                [self addPoint:point
-                         index:i
-                        isShow:isShowMaxAndMinPoint
-                         value:[valueString floatValue]];
-                
-//                [progressline stroke];
-            }
+            CGPoint point = CGPointMake(xPosition+index*_xLabelWidth, chartCavanHeight - grade * chartCavanHeight+UULabelHeight);
+            [progressline addLineToPoint:point];
+            [progressline moveToPoint:point];
+            NSLog(@"%f--%f", point.x, point.y);
+            [self addPoint:point
+                     index:i
+                     value:[valueString floatValue]];
             index += 1;
         }
         
@@ -251,7 +207,7 @@
     }
 }
 
-- (void)addPoint:(CGPoint)point index:(NSInteger)index isShow:(BOOL)isHollow value:(CGFloat)value
+- (void)addPoint:(CGPoint)point index:(NSInteger)index value:(CGFloat)value
 {
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(5, 5, 8, 8)];
     view.center = point;
@@ -260,9 +216,6 @@
     view.layer.borderWidth = 2;
     view.layer.borderColor = [[_colors objectAtIndex:index] CGColor]?[[_colors objectAtIndex:index] CGColor]:UUGreen.CGColor;
     
-    if (isHollow) {
-        view.backgroundColor = [UIColor whiteColor];
-    }else{
         view.backgroundColor = [_colors objectAtIndex:index]?[_colors objectAtIndex:index]:UUGreen;
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(point.x-UUTagLabelwidth/2.0, point.y-UULabelHeight*2, UUTagLabelwidth, UULabelHeight)];
         label.font = [UIFont systemFontOfSize:10];
@@ -270,7 +223,6 @@
         label.textColor = view.backgroundColor;
         label.text = [NSString stringWithFormat:@"%d",(int)value];
         [self addSubview:label];
-    }
     
     [self addSubview:view];
 }

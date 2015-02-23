@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import "TableViewCell.h"
+#import "UUColor.h"
 
 @interface SecondViewController ()
 
@@ -51,20 +52,20 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 170;
+    return 200;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    return 35;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width , 30);
+    CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width , 35);
     UILabel *label = [[UILabel alloc]initWithFrame:frame];
-    label.font = [UIFont systemFontOfSize:28];
-    label.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.3];
+    label.font = [UIFont systemFontOfSize:25];
+    label.backgroundColor = UULightBlue;
     label.text = section ? @"新闻分类排名":@"新闻日期走势";
-    label.textColor = [UIColor colorWithRed:0.257 green:0.650 blue:0.478 alpha:1.000];
+    label.textColor = UUWhite;
     label.textAlignment = NSTextAlignmentCenter;
     return label;
 }

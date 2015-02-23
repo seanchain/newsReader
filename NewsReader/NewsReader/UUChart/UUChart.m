@@ -7,6 +7,7 @@
 //
 
 #import "UUChart.h"
+#import "UUColor.h"
 
 @interface UUChart ()
 
@@ -37,11 +38,26 @@
     return self;
 }
 
+- (NSDictionary*)getDic{
+    return @{@"金融——":UUWeiboColor, @"体育——":UUTwitterColor, @"艺术——":UUGreen};
+}
+
 -(void)setUpChart{
 	if (self.chartStyle == UUChartLineStyle) {
         if(!_lineChart){
             _lineChart = [[UULineChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             [self addSubview:_lineChart];
+            [self getDic];
+            NSDictionary *d = [self getDic];
+            NSArray *keys = [d allKeys];
+            for (int i = 0; i < [d count]; i ++) {
+                UILabel *lb = [[UILabel alloc] initWithFrame:CGRectMake(0 + i * 60 , self.frame.size.height + 10,  self.frame.size.width, 15)];
+                lb.text = keys[i];
+                lb.textColor = [d objectForKey:keys[i]];
+                lb.font = [UIFont systemFontOfSize:9];
+                [self addSubview:lb];
+            }
+           
         }
         //选择标记范围
         if ([self.dataSource respondsToSelector:@selector(UUChartMarkRangeInLineChart:)]) {
