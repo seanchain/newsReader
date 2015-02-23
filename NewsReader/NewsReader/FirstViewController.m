@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import "AppDelegate.h"
 #import "NewsContent.h"
+#import "UUColor.h"
 
 @interface FirstViewController ()
 
@@ -36,12 +37,11 @@ NSIndexPath *idxpth;
     NSArray *fav = [self transferButtonArray:favstr];
     [toolbar setItems:fav animated:YES];
     [toolbar setTintColor:[UIColor whiteColor]];
-    [toolbar setBarTintColor:[UIColor blackColor]];
+    [toolbar setBarTintColor:UUTwitterColor];
     //[toolbar setBackgroundColor:[UIColor greenColor]];
     [self.view addSubview:toolbar];
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, y * 0.16, x, y - y * 0.16) style:UITableViewStylePlain];
     table.delegate = self;
-    [self.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
     table.dataSource = self;
     [self.view addSubview:table];
     newstitle = @[@"拜仁1-1憾平矿工", @"苹果加大Apple Watch生产"];
