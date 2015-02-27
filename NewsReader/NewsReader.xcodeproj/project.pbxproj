@@ -148,29 +148,7 @@
 				7726E71B1AA0C0490002532C /* VPImageCropper */,
 				77CA912B1A9B72C6004B6271 /* UUChart */,
 				770A739F1A9335CD0089A77B /* SKSplashView */,
-				770A73701A930EC30089A77B /* AppDelegate.h */,
-				770A73711A930EC30089A77B /* AppDelegate.m */,
-				77A86BCE1A94BB380002EFDF /* TableViewCell.h */,
-				77A86BCF1A94BB380002EFDF /* TableViewCell.m */,
-				77A86BD11A94C14C0002EFDF /* TableViewCell.xib */,
-				770A73731A930EC30089A77B /* FirstViewController.h */,
-				770A73741A930EC30089A77B /* FirstViewController.m */,
-				77A86B831A9433A30002EFDF /* NewsContent.h */,
-				77A86B841A9433A30002EFDF /* NewsContent.m */,
-				770A73761A930EC30089A77B /* SecondViewController.h */,
-				770A73771A930EC30089A77B /* SecondViewController.m */,
-				770A73951A9312340089A77B /* LoginController.h */,
-				770A73961A9312340089A77B /* LoginController.m */,
-				770A73A81A93442C0089A77B /* Func.h */,
-				770A73A91A93442C0089A77B /* Func.m */,
-				770A73791A930EC30089A77B /* Main.storyboard */,
-				77A86B5E1A939B130002EFDF /* ThirdViewController.h */,
-				77A86B5F1A939B130002EFDF /* ThirdViewController.m */,
-				770A739C1A9328180089A77B /* RegisterController.h */,
-				770A739D1A9328180089A77B /* RegisterController.m */,
-				770A737C1A930EC30089A77B /* Images.xcassets */,
-				770A737E1A930EC30089A77B /* LaunchScreen.xib */,
-				770A736C1A930EC30089A77B /* Supporting Files */,
+				7726E7261AA0D7FA0002532C /* NewsReaderClasses */,
 			);
 			path = NewsReader;
 			sourceTree = "<group>";
@@ -226,6 +204,36 @@
 				7726E71D1AA0C0490002532C /* VPImageCropperViewController.m */,
 			);
 			path = VPImageCropper;
+			sourceTree = "<group>";
+		};
+		7726E7261AA0D7FA0002532C /* NewsReaderClasses */ = {
+			isa = PBXGroup;
+			children = (
+				770A73711A930EC30089A77B /* AppDelegate.m */,
+				770A73701A930EC30089A77B /* AppDelegate.h */,
+				77A86BCE1A94BB380002EFDF /* TableViewCell.h */,
+				77A86BCF1A94BB380002EFDF /* TableViewCell.m */,
+				77A86BD11A94C14C0002EFDF /* TableViewCell.xib */,
+				770A73731A930EC30089A77B /* FirstViewController.h */,
+				770A73741A930EC30089A77B /* FirstViewController.m */,
+				77A86B831A9433A30002EFDF /* NewsContent.h */,
+				77A86B841A9433A30002EFDF /* NewsContent.m */,
+				770A73761A930EC30089A77B /* SecondViewController.h */,
+				770A73771A930EC30089A77B /* SecondViewController.m */,
+				770A73951A9312340089A77B /* LoginController.h */,
+				770A73961A9312340089A77B /* LoginController.m */,
+				770A73A81A93442C0089A77B /* Func.h */,
+				770A73A91A93442C0089A77B /* Func.m */,
+				770A73791A930EC30089A77B /* Main.storyboard */,
+				77A86B5E1A939B130002EFDF /* ThirdViewController.h */,
+				77A86B5F1A939B130002EFDF /* ThirdViewController.m */,
+				770A739C1A9328180089A77B /* RegisterController.h */,
+				770A739D1A9328180089A77B /* RegisterController.m */,
+				770A737C1A930EC30089A77B /* Images.xcassets */,
+				770A737E1A930EC30089A77B /* LaunchScreen.xib */,
+				770A736C1A930EC30089A77B /* Supporting Files */,
+			);
+			name = NewsReaderClasses;
 			sourceTree = "<group>";
 		};
 		77CA912B1A9B72C6004B6271 /* UUChart */ = {
