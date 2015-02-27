@@ -37,7 +37,7 @@ NSIndexPath *idxpth;
     NSArray *fav = [self transferButtonArray:favstr];
     [toolbar setItems:fav animated:YES];
     [toolbar setTintColor:[UIColor whiteColor]];
-    [toolbar setBarTintColor:UUTwitterColor];
+    [toolbar setBarTintColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
     //[toolbar setBackgroundColor:[UIColor greenColor]];
     [self.view addSubview:toolbar];
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, y * 0.16, x, y - y * 0.16) style:UITableViewStylePlain];
@@ -58,7 +58,9 @@ NSIndexPath *idxpth;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     NSUInteger rowNo = indexPath.row;
     cell.textLabel.text = [newstitle objectAtIndex:rowNo];
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.19 green:0.52 blue:0.92 alpha:1];
+    cell.textLabel.highlightedTextColor = [UIColor whiteColor];
     //将来加入缩略图显示
     return cell;
 }
@@ -96,6 +98,12 @@ NSIndexPath *idxpth;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     idxpth = indexPath;
+    UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:idxpth];
+    if (cell.tag == 0) {
+        cell.selected = NO;
+    }else{
+        [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    }
     [self performSegueWithIdentifier:@"newscontent" sender:self.view];
 }
 
