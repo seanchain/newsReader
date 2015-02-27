@@ -41,6 +41,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)hidekeyword:(id)sender {
+    [self.emailtext resignFirstResponder];
+    [self.idtext resignFirstResponder];
+    [self.passwordcomfirmtext resignFirstResponder];
+    [self.passwordtext resignFirstResponder];
+}
+
 - (IBAction)registerUser:(id)sender {
     NSString *email = emailtext.text;
     NSString *userid = idtext.text;

@@ -23,6 +23,7 @@
 		770A73AA1A93442C0089A77B /* Func.m in Sources */ = {isa = PBXBuildFile; fileRef = 770A73A91A93442C0089A77B /* Func.m */; };
 		7726E71E1AA0C0490002532C /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7726E71D1AA0C0490002532C /* VPImageCropperViewController.m */; };
 		7726E7201AA0D1BB0002532C /* testimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7726E71F1AA0D1BB0002532C /* testimg.png */; };
+		7726E7241AA0D4F60002532C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7726E7231AA0D4F60002532C /* icon.png */; };
 		77A86B601A939B130002EFDF /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86B5F1A939B130002EFDF /* ThirdViewController.m */; };
 		77A86B801A942E510002EFDF /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7D1A942E510002EFDF /* recommend.png */; };
 		77A86B811A942E510002EFDF /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7E1A942E510002EFDF /* news.png */; };
@@ -79,6 +80,7 @@
 		7726E71C1AA0C0490002532C /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
 		7726E71D1AA0C0490002532C /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
 		7726E71F1AA0D1BB0002532C /* testimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testimg.png; sourceTree = "<group>"; };
+		7726E7231AA0D4F60002532C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		77A86B5E1A939B130002EFDF /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		77A86B5F1A939B130002EFDF /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		77A86B7D1A942E510002EFDF /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		770A736C1A930EC30089A77B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7726E7231AA0D4F60002532C /* icon.png */,
 				7726E71F1AA0D1BB0002532C /* testimg.png */,
 				77DD624F1A974AE700C1FEF4 /* Background.jpg */,
 				77A86B7D1A942E510002EFDF /* recommend.png */,
@@ -330,6 +333,7 @@
 				77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */,
 				770A73A71A9336A20089A77B /* logo.png in Resources */,
 				77A86B811A942E510002EFDF /* news.png in Resources */,
+				7726E7241AA0D4F60002532C /* icon.png in Resources */,
 				770A73801A930EC30089A77B /* LaunchScreen.xib in Resources */,
 				770A737D1A930EC30089A77B /* Images.xcassets in Resources */,
 				7726E7201AA0D1BB0002532C /* testimg.png in Resources */,

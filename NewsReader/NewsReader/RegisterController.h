@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *idtext;
 @property (weak, nonatomic) IBOutlet UITextField *passwordtext;
 @property (weak, nonatomic) IBOutlet UITextField *passwordcomfirmtext;
+- (IBAction)hidekeyword:(id)sender;
 - (IBAction)registerUser:(id)sender;
 
 @end
