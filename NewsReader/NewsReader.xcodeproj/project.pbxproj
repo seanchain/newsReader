@@ -145,10 +145,8 @@
 		770A736B1A930EC30089A77B /* NewsReader */ = {
 			isa = PBXGroup;
 			children = (
-				7726E71B1AA0C0490002532C /* VPImageCropper */,
-				77CA912B1A9B72C6004B6271 /* UUChart */,
-				770A739F1A9335CD0089A77B /* SKSplashView */,
-				7726E7261AA0D7FA0002532C /* NewsReaderClasses */,
+				7726E7271AA0D8710002532C /* Accessories */,
+				7726E7261AA0D7FA0002532C /* NewsReader */,
 			);
 			path = NewsReader;
 			sourceTree = "<group>";
@@ -206,7 +204,7 @@
 			path = VPImageCropper;
 			sourceTree = "<group>";
 		};
-		7726E7261AA0D7FA0002532C /* NewsReaderClasses */ = {
+		7726E7261AA0D7FA0002532C /* NewsReader */ = {
 			isa = PBXGroup;
 			children = (
 				770A73711A930EC30089A77B /* AppDelegate.m */,
@@ -233,7 +231,17 @@
 				770A737E1A930EC30089A77B /* LaunchScreen.xib */,
 				770A736C1A930EC30089A77B /* Supporting Files */,
 			);
-			name = NewsReaderClasses;
+			name = NewsReader;
+			sourceTree = "<group>";
+		};
+		7726E7271AA0D8710002532C /* Accessories */ = {
+			isa = PBXGroup;
+			children = (
+				7726E71B1AA0C0490002532C /* VPImageCropper */,
+				77CA912B1A9B72C6004B6271 /* UUChart */,
+				770A739F1A9335CD0089A77B /* SKSplashView */,
+			);
+			name = Accessories;
 			sourceTree = "<group>";
 		};
 		77CA912B1A9B72C6004B6271 /* UUChart */ = {
