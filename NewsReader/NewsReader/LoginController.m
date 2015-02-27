@@ -32,7 +32,7 @@
     imageView.image = [UIImage imageNamed:@"twitter background.png"];
     [self.view addSubview:imageView];
     //Twitter style splash
-    SKSplashIcon *twitterSplashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"icon.png"] animationType:SKIconAnimationTypeBounce];
+    SKSplashIcon *twitterSplashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"logo.png"] animationType:SKIconAnimationTypeBounce];
     UIColor *twitterColor = UUFreshGreen;
     _splashView = [[SKSplashView alloc] initWithSplashIcon:twitterSplashIcon backgroundColor:twitterColor animationType:SKSplashAnimationTypeNone];
     _splashView.delegate = self; //Optional -> if you want to receive updates on animation beginning/end

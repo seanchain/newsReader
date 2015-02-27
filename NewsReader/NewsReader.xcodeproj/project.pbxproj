@@ -19,8 +19,10 @@
 		770A739E1A9328180089A77B /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770A739D1A9328180089A77B /* RegisterController.m */; };
 		770A73A41A9335CD0089A77B /* SKSplashIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 770A73A11A9335CD0089A77B /* SKSplashIcon.m */; };
 		770A73A51A9335CD0089A77B /* SKSplashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770A73A31A9335CD0089A77B /* SKSplashView.m */; };
-		770A73A71A9336A20089A77B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 770A73A61A9336A20089A77B /* icon.png */; };
+		770A73A71A9336A20089A77B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 770A73A61A9336A20089A77B /* logo.png */; };
 		770A73AA1A93442C0089A77B /* Func.m in Sources */ = {isa = PBXBuildFile; fileRef = 770A73A91A93442C0089A77B /* Func.m */; };
+		7726E71E1AA0C0490002532C /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7726E71D1AA0C0490002532C /* VPImageCropperViewController.m */; };
+		7726E7201AA0D1BB0002532C /* testimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7726E71F1AA0D1BB0002532C /* testimg.png */; };
 		77A86B601A939B130002EFDF /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86B5F1A939B130002EFDF /* ThirdViewController.m */; };
 		77A86B801A942E510002EFDF /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7D1A942E510002EFDF /* recommend.png */; };
 		77A86B811A942E510002EFDF /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7E1A942E510002EFDF /* news.png */; };
@@ -28,7 +30,6 @@
 		77A86B851A9433A30002EFDF /* NewsContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86B841A9433A30002EFDF /* NewsContent.m */; };
 		77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BCF1A94BB380002EFDF /* TableViewCell.m */; };
 		77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A86BD11A94C14C0002EFDF /* TableViewCell.xib */; };
-		77AB0BB91AA0B38100A3C804 /* testimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77AB0BB81AA0B38100A3C804 /* testimg.jpg */; };
 		77CA91381A9B72C6004B6271 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912D1A9B72C6004B6271 /* UUBar.m */; };
 		77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912F1A9B72C6004B6271 /* UUBarChart.m */; };
 		77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA91311A9B72C6004B6271 /* UUChart.m */; };
@@ -72,9 +73,12 @@
 		770A73A11A9335CD0089A77B /* SKSplashIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSplashIcon.m; sourceTree = "<group>"; };
 		770A73A21A9335CD0089A77B /* SKSplashView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSplashView.h; sourceTree = "<group>"; };
 		770A73A31A9335CD0089A77B /* SKSplashView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSplashView.m; sourceTree = "<group>"; };
-		770A73A61A9336A20089A77B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		770A73A61A9336A20089A77B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		770A73A81A93442C0089A77B /* Func.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func.h; sourceTree = "<group>"; };
 		770A73A91A93442C0089A77B /* Func.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Func.m; sourceTree = "<group>"; };
+		7726E71C1AA0C0490002532C /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
+		7726E71D1AA0C0490002532C /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
+		7726E71F1AA0D1BB0002532C /* testimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testimg.png; sourceTree = "<group>"; };
 		77A86B5E1A939B130002EFDF /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		77A86B5F1A939B130002EFDF /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		77A86B7D1A942E510002EFDF /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
@@ -85,7 +89,6 @@
 		77A86BCE1A94BB380002EFDF /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		77A86BCF1A94BB380002EFDF /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		77A86BD11A94C14C0002EFDF /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		77AB0BB81AA0B38100A3C804 /* testimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testimg.jpg; sourceTree = "<group>"; };
 		77CA912C1A9B72C6004B6271 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
 		77CA912D1A9B72C6004B6271 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		77CA912E1A9B72C6004B6271 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 		770A736B1A930EC30089A77B /* NewsReader */ = {
 			isa = PBXGroup;
 			children = (
+				7726E71B1AA0C0490002532C /* VPImageCropper */,
 				77CA912B1A9B72C6004B6271 /* UUChart */,
 				770A739F1A9335CD0089A77B /* SKSplashView */,
 				770A73701A930EC30089A77B /* AppDelegate.h */,
@@ -172,12 +176,12 @@
 		770A736C1A930EC30089A77B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				77AB0BB81AA0B38100A3C804 /* testimg.jpg */,
+				7726E71F1AA0D1BB0002532C /* testimg.png */,
 				77DD624F1A974AE700C1FEF4 /* Background.jpg */,
 				77A86B7D1A942E510002EFDF /* recommend.png */,
 				77A86B7E1A942E510002EFDF /* news.png */,
 				77A86B7F1A942E510002EFDF /* user.png */,
-				770A73A61A9336A20089A77B /* icon.png */,
+				770A73A61A9336A20089A77B /* logo.png */,
 				770A736D1A930EC30089A77B /* Info.plist */,
 				770A736E1A930EC30089A77B /* main.m */,
 			);
@@ -210,6 +214,15 @@
 				770A73A31A9335CD0089A77B /* SKSplashView.m */,
 			);
 			path = SKSplashView;
+			sourceTree = "<group>";
+		};
+		7726E71B1AA0C0490002532C /* VPImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				7726E71C1AA0C0490002532C /* VPImageCropperViewController.h */,
+				7726E71D1AA0C0490002532C /* VPImageCropperViewController.m */,
+			);
+			path = VPImageCropper;
 			sourceTree = "<group>";
 		};
 		77CA912B1A9B72C6004B6271 /* UUChart */ = {
@@ -315,11 +328,11 @@
 				77A86B821A942E510002EFDF /* user.png in Resources */,
 				77A86B801A942E510002EFDF /* recommend.png in Resources */,
 				77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */,
-				770A73A71A9336A20089A77B /* icon.png in Resources */,
-				77AB0BB91AA0B38100A3C804 /* testimg.jpg in Resources */,
+				770A73A71A9336A20089A77B /* logo.png in Resources */,
 				77A86B811A942E510002EFDF /* news.png in Resources */,
 				770A73801A930EC30089A77B /* LaunchScreen.xib in Resources */,
 				770A737D1A930EC30089A77B /* Images.xcassets in Resources */,
+				7726E7201AA0D1BB0002532C /* testimg.png in Resources */,
 				77DD62501A974AE700C1FEF4 /* Background.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +368,7 @@
 				77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */,
 				77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */,
 				770A73751A930EC30089A77B /* FirstViewController.m in Sources */,
+				7726E71E1AA0C0490002532C /* VPImageCropperViewController.m in Sources */,
 				770A736F1A930EC30089A77B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
