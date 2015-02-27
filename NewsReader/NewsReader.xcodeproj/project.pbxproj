@@ -28,6 +28,7 @@
 		77A86B851A9433A30002EFDF /* NewsContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86B841A9433A30002EFDF /* NewsContent.m */; };
 		77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BCF1A94BB380002EFDF /* TableViewCell.m */; };
 		77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A86BD11A94C14C0002EFDF /* TableViewCell.xib */; };
+		77AB0BB91AA0B38100A3C804 /* testimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77AB0BB81AA0B38100A3C804 /* testimg.jpg */; };
 		77CA91381A9B72C6004B6271 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912D1A9B72C6004B6271 /* UUBar.m */; };
 		77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912F1A9B72C6004B6271 /* UUBarChart.m */; };
 		77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA91311A9B72C6004B6271 /* UUChart.m */; };
@@ -84,6 +85,7 @@
 		77A86BCE1A94BB380002EFDF /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		77A86BCF1A94BB380002EFDF /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		77A86BD11A94C14C0002EFDF /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		77AB0BB81AA0B38100A3C804 /* testimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testimg.jpg; sourceTree = "<group>"; };
 		77CA912C1A9B72C6004B6271 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
 		77CA912D1A9B72C6004B6271 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		77CA912E1A9B72C6004B6271 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		770A736C1A930EC30089A77B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				77AB0BB81AA0B38100A3C804 /* testimg.jpg */,
 				77DD624F1A974AE700C1FEF4 /* Background.jpg */,
 				77A86B7D1A942E510002EFDF /* recommend.png */,
 				77A86B7E1A942E510002EFDF /* news.png */,
@@ -313,6 +316,7 @@
 				77A86B801A942E510002EFDF /* recommend.png in Resources */,
 				77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */,
 				770A73A71A9336A20089A77B /* icon.png in Resources */,
+				77AB0BB91AA0B38100A3C804 /* testimg.jpg in Resources */,
 				77A86B811A942E510002EFDF /* news.png in Resources */,
 				770A73801A930EC30089A77B /* LaunchScreen.xib in Resources */,
 				770A737D1A930EC30089A77B /* Images.xcassets in Resources */,
