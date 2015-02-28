@@ -27,6 +27,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)keyboarddown:(id)sender {
+    [email resignFirstResponder];
+}
+
 - (IBAction)click:(id)sender {
     NSString *emailaddr = email.text;
     NSString *url = @"http://www.chensihang.com/iostest/mail_val.php";

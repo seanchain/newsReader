@@ -10,6 +10,7 @@
 
 @interface FindBackPassword : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *email;
+- (IBAction)keyboarddown:(id)sender;
 - (IBAction)click:(id)sender;
 
 @end

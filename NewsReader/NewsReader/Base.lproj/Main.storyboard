@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055.5" y="-71.5"/>
+            <point key="canvasLocation" x="971.5" y="-131.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="wAJ-di-ENe">
@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rwn-Xy-au4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1478.5" y="-768.5"/>
+            <point key="canvasLocation" x="1419.5" y="-138.5"/>
         </scene>
         <!--用户-->
         <scene sceneID="KGb-kd-rSV">
@@ -137,18 +137,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZxN-YE-fzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28.5" y="1616.5"/>
+            <point key="canvasLocation" x="-552.5" y="1620.5"/>
         </scene>
         <!--Find Back Password-->
         <scene sceneID="m3C-RV-Goe">
             <objects>
                 <viewController id="KR2-9y-isS" customClass="FindBackPassword" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d5l-iU-wlM">
+                    <view key="view" contentMode="scaleToFill" id="d5l-iU-wlM" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您注册的邮箱号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nxF-ux-dDP">
-                                <rect key="frame" x="56" y="56" width="170" height="21"/>
+                                <rect key="frame" x="91" y="61" width="170" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -164,14 +164,28 @@
                                     <action selector="click:" destination="KR2-9y-isS" eventType="touchUpInside" id="yfH-nN-Fjo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lfh-5o-amJ">
+                                <rect key="frame" x="292" y="617" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="回到登陆">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6Z5-Qw-yA3" kind="modal" id="Thc-Ty-fd3"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Ht1-7f-SfR">
-                                <rect key="frame" x="43" y="95" width="266" height="30"/>
+                                <rect key="frame" x="43" y="111" width="266" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="keyboarddown:" destination="KR2-9y-isS" eventType="touchDown" id="6hW-lC-WYS"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="email" destination="Ht1-7f-SfR" id="SgK-DR-hcv"/>
@@ -179,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Am7-S4-k0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-541.5" y="829.5"/>
+            <point key="canvasLocation" x="-246.5" y="-375.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -201,7 +215,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-145.5" y="856.5"/>
+            <point key="canvasLocation" x="-557.5" y="840.5"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="yPh-EI-fPG">
@@ -275,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QJn-wG-Bct" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-392.5" y="-56.5"/>
+            <point key="canvasLocation" x="-756.5" y="-65.5"/>
         </scene>
         <!--Register Controller-->
         <scene sceneID="lMc-Ch-buA">
@@ -351,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gh-X3-Bhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-932.5" y="847.5"/>
+            <point key="canvasLocation" x="-1432.5" y="856.5"/>
         </scene>
     </scenes>
     <resources>
@@ -365,6 +379,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LVa-Nx-iyu"/>
+        <segue reference="QWc-SK-Fwq"/>
+        <segue reference="SHE-Xh-EsQ"/>
     </inferredMetricsTieBreakers>
 </document>
