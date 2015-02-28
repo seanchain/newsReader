@@ -47,6 +47,7 @@
 		77DE05121AA17E1200D76A60 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DE04851AA17E1200D76A60 /* AFURLRequestSerialization.m */; };
 		77DE05131AA17E1200D76A60 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DE04871AA17E1200D76A60 /* AFURLResponseSerialization.m */; };
 		77DE05141AA17E1200D76A60 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DE04891AA17E1200D76A60 /* AFURLSessionManager.m */; };
+		77DE056C1AA1A39600D76A60 /* portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77DE056B1AA1A39600D76A60 /* portrait.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		77DE04871AA17E1200D76A60 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		77DE04881AA17E1200D76A60 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		77DE04891AA17E1200D76A60 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		77DE056B1AA1A39600D76A60 /* portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 		770A736C1A930EC30089A77B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				77DE056B1AA1A39600D76A60 /* portrait.jpg */,
 				7726E7231AA0D4F60002532C /* icon.png */,
 				7726E71F1AA0D1BB0002532C /* testimg.png */,
 				77DD624F1A974AE700C1FEF4 /* Background.jpg */,
@@ -407,6 +410,7 @@
 				77A86B811A942E510002EFDF /* news.png in Resources */,
 				7726E7241AA0D4F60002532C /* icon.png in Resources */,
 				770A73801A930EC30089A77B /* LaunchScreen.xib in Resources */,
+				77DE056C1AA1A39600D76A60 /* portrait.jpg in Resources */,
 				770A737D1A930EC30089A77B /* Images.xcassets in Resources */,
 				7726E7201AA0D1BB0002532C /* testimg.png in Resources */,
 				77DD62501A974AE700C1FEF4 /* Background.jpg in Resources */,

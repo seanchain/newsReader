@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SKSplashView.h"
 
-@interface LoginController : UIViewController <SKSplashDelegate>
+@interface LoginController : UIViewController <SKSplashDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *idoremail;
 @property (weak, nonatomic) IBOutlet UITextField *passwd;
 - (IBAction)login:(id)sender;

@@ -70,7 +70,6 @@
 - (void)uploadPortrait:(NSString *)userid{
     UIImage *portrait = _portraitImageView.image;
     NSData *imgdata = UIImageJPEGRepresentation(portrait, 1);
-    NSLog(@"%@", imgdata);
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -80,7 +79,7 @@
         [formData appendPartWithFileData:imgdata name:@"file" fileName:filename mimeType:@"image/jpeg"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(response);
+        NSLog(@"%@", response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAILURE : %@ --> %@", operation.responseString, error);
     }];
@@ -88,8 +87,7 @@
 
 - (void)loadPortrait {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-        NSURL *portraitUrl = [NSURL URLWithString:@"http://www.chensihang.com/materials/portrait.jpg"];
-        UIImage *protraitImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:portraitUrl]];
+        UIImage *protraitImg = [UIImage imageNamed:@"portrait.jpg"];
         dispatch_sync(dispatch_get_main_queue(), ^{
             self.portraitImageView.image = protraitImg;
         });
@@ -303,8 +301,6 @@
         CGFloat x = (self.view.frame.size.width - w) / 2;
         CGFloat y = (self.view.frame.size.height - h) / 8;
         _portraitImageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, w, h)];
-        NSLog(@"%f--%f", self.view.frame.size.width, self.view.frame.size.height);
-        NSLog(@"%f--%f--%f--%f", x, y, w, h);
         
         UIImage *editimg = [UIImage imageNamed:@"testimg.png"];
         CGFloat w1 = 20.0f;
