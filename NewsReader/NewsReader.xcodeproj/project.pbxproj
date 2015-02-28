@@ -48,6 +48,7 @@
 		77DE05131AA17E1200D76A60 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DE04871AA17E1200D76A60 /* AFURLResponseSerialization.m */; };
 		77DE05141AA17E1200D76A60 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DE04891AA17E1200D76A60 /* AFURLSessionManager.m */; };
 		77DE056C1AA1A39600D76A60 /* portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77DE056B1AA1A39600D76A60 /* portrait.jpg */; };
+		77ECE3581AA1D7C3008537AB /* FindBackPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ECE3571AA1D7C3008537AB /* FindBackPassword.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,8 @@
 		77DE04881AA17E1200D76A60 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		77DE04891AA17E1200D76A60 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		77DE056B1AA1A39600D76A60 /* portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait.jpg; sourceTree = "<group>"; };
+		77ECE3561AA1D7C3008537AB /* FindBackPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindBackPassword.h; sourceTree = "<group>"; };
+		77ECE3571AA1D7C3008537AB /* FindBackPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindBackPassword.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,8 @@
 				770A73A81A93442C0089A77B /* Func.h */,
 				770A73A91A93442C0089A77B /* Func.m */,
 				770A73791A930EC30089A77B /* Main.storyboard */,
+				77ECE3561AA1D7C3008537AB /* FindBackPassword.h */,
+				77ECE3571AA1D7C3008537AB /* FindBackPassword.m */,
 				77A86B5E1A939B130002EFDF /* ThirdViewController.h */,
 				77A86B5F1A939B130002EFDF /* ThirdViewController.m */,
 				770A739C1A9328180089A77B /* RegisterController.h */,
@@ -451,6 +456,7 @@
 				77DE05141AA17E1200D76A60 /* AFURLSessionManager.m in Sources */,
 				77CA91381A9B72C6004B6271 /* UUBar.m in Sources */,
 				77DE050F1AA17E1200D76A60 /* AFNetworkReachabilityManager.m in Sources */,
+				77ECE3581AA1D7C3008537AB /* FindBackPassword.m in Sources */,
 				77DE05131AA17E1200D76A60 /* AFURLResponseSerialization.m in Sources */,
 				77DE05121AA17E1200D76A60 /* AFURLRequestSerialization.m in Sources */,
 				770A73A51A9335CD0089A77B /* SKSplashView.m in Sources */,

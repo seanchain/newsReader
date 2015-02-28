@@ -1,3 +1,4 @@
+
 //
 //  Func.m
 //  NewsReader
