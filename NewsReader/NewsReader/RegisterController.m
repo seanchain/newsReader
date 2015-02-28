@@ -11,6 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Func.h"
+#import "AFNetworking.h"
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
@@ -60,9 +61,29 @@
     NSString *poststr = [NSString stringWithFormat:@"id=%@&email=%@&password=%@", userid, email,  password];
     NSString *res = [Func webRequestWith:url and:poststr];
     if ([res isEqualToString:@"success"]) {
+        [self uploadPortrait:userid]; //先上传头像文件
         [self performSegueWithIdentifier:@"regbar" sender:self];
     }
     else [Func showAlert:res];
+}
+
+- (void)uploadPortrait:(NSString *)userid{
+    UIImage *portrait = _portraitImageView.image;
+    NSData *imgdata = UIImageJPEGRepresentation(portrait, 1);
+    NSLog(@"%@", imgdata);
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *filename = [NSString stringWithFormat:@"%@.jpg", userid];
+    [manager POST:@"http://www.chensihang.com/iostest/upload.php" parameters:@{} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imgdata name:@"file" fileName:filename mimeType:@"image/jpeg"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"FAILURE : %@ --> %@", operation.responseString, error);
+    }];
 }
 
 - (void)loadPortrait {
