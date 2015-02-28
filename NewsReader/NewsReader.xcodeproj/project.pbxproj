@@ -245,6 +245,64 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		771F4D321AA21AF4001E1EB4 /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				77ECE3561AA1D7C3008537AB /* FindBackPassword.h */,
+				77ECE3571AA1D7C3008537AB /* FindBackPassword.m */,
+				770A73951A9312340089A77B /* LoginController.h */,
+				770A73961A9312340089A77B /* LoginController.m */,
+				770A739C1A9328180089A77B /* RegisterController.h */,
+				770A739D1A9328180089A77B /* RegisterController.m */,
+			);
+			name = LoginAndRegister;
+			sourceTree = "<group>";
+		};
+		771F4D331AA21B17001E1EB4 /* Tabviews */ = {
+			isa = PBXGroup;
+			children = (
+				770A73731A930EC30089A77B /* FirstViewController.h */,
+				770A73741A930EC30089A77B /* FirstViewController.m */,
+				770A73761A930EC30089A77B /* SecondViewController.h */,
+				770A73771A930EC30089A77B /* SecondViewController.m */,
+				77A86B5E1A939B130002EFDF /* ThirdViewController.h */,
+				77A86B5F1A939B130002EFDF /* ThirdViewController.m */,
+			);
+			name = Tabviews;
+			sourceTree = "<group>";
+		};
+		771F4D341AA21B38001E1EB4 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				77A86BCE1A94BB380002EFDF /* TableViewCell.h */,
+				77A86BCF1A94BB380002EFDF /* TableViewCell.m */,
+				77A86BD11A94C14C0002EFDF /* TableViewCell.xib */,
+			);
+			name = Chart;
+			sourceTree = "<group>";
+		};
+		771F4D351AA21B4C001E1EB4 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				770A73711A930EC30089A77B /* AppDelegate.m */,
+				770A73701A930EC30089A77B /* AppDelegate.h */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		771F4D361AA21B70001E1EB4 /* FunctionViews */ = {
+			isa = PBXGroup;
+			children = (
+				77A86B831A9433A30002EFDF /* NewsContent.h */,
+				77A86B841A9433A30002EFDF /* NewsContent.m */,
+				770A73A81A93442C0089A77B /* Func.h */,
+				770A73A91A93442C0089A77B /* Func.m */,
+				771F4D2F1AA21805001E1EB4 /* TagList.h */,
+				771F4D301AA21805001E1EB4 /* TagList.m */,
+			);
+			name = FunctionViews;
+			sourceTree = "<group>";
+		};
 		7726E71B1AA0C0490002532C /* VPImageCropper */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,30 +315,12 @@
 		7726E7261AA0D7FA0002532C /* NewsReader */ = {
 			isa = PBXGroup;
 			children = (
-				770A73711A930EC30089A77B /* AppDelegate.m */,
-				770A73701A930EC30089A77B /* AppDelegate.h */,
-				77A86BCE1A94BB380002EFDF /* TableViewCell.h */,
-				77A86BCF1A94BB380002EFDF /* TableViewCell.m */,
-				77A86BD11A94C14C0002EFDF /* TableViewCell.xib */,
-				770A73731A930EC30089A77B /* FirstViewController.h */,
-				770A73741A930EC30089A77B /* FirstViewController.m */,
-				77A86B831A9433A30002EFDF /* NewsContent.h */,
-				77A86B841A9433A30002EFDF /* NewsContent.m */,
-				770A73761A930EC30089A77B /* SecondViewController.h */,
-				770A73771A930EC30089A77B /* SecondViewController.m */,
-				770A73951A9312340089A77B /* LoginController.h */,
-				770A73961A9312340089A77B /* LoginController.m */,
-				770A73A81A93442C0089A77B /* Func.h */,
-				770A73A91A93442C0089A77B /* Func.m */,
+				771F4D351AA21B4C001E1EB4 /* Delegate */,
+				771F4D341AA21B38001E1EB4 /* Chart */,
+				771F4D331AA21B17001E1EB4 /* Tabviews */,
+				771F4D361AA21B70001E1EB4 /* FunctionViews */,
+				771F4D321AA21AF4001E1EB4 /* LoginAndRegister */,
 				770A73791A930EC30089A77B /* Main.storyboard */,
-				771F4D2F1AA21805001E1EB4 /* TagList.h */,
-				771F4D301AA21805001E1EB4 /* TagList.m */,
-				77ECE3561AA1D7C3008537AB /* FindBackPassword.h */,
-				77ECE3571AA1D7C3008537AB /* FindBackPassword.m */,
-				77A86B5E1A939B130002EFDF /* ThirdViewController.h */,
-				77A86B5F1A939B130002EFDF /* ThirdViewController.m */,
-				770A739C1A9328180089A77B /* RegisterController.h */,
-				770A739D1A9328180089A77B /* RegisterController.m */,
 				770A737C1A930EC30089A77B /* Images.xcassets */,
 				770A737E1A930EC30089A77B /* LaunchScreen.xib */,
 				770A736C1A930EC30089A77B /* Supporting Files */,

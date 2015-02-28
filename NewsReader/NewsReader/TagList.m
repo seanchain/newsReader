@@ -16,7 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    tagList = [[DWTagList alloc] initWithFrame:CGRectMake(20.0f, 70.f, 280.0f, 300.0f)];
+    NSArray *array = [[NSArray alloc] initWithObjects:@"体育", @"生活", @"军事", @"科技", @"财经", @"社会", nil];
+    [tagList setTags:array];
+    [self.view addSubview:tagList];
 }
 
 - (void)didReceiveMemoryWarning {

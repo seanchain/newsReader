@@ -8,7 +8,7 @@
 #import "DWTagList.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define CORNER_RADIUS 0.0f
+#define CORNER_RADIUS 5.0f
 #define LABEL_MARGIN 5.0f
 #define BOTTOM_MARGIN 5.0f
 #define FONT_SIZE 13.0f
@@ -49,6 +49,7 @@
 
 - (void)display
 {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(highlightedTextColor)];
     for (UILabel *subview in [self subviews]) {
         [subview removeFromSuperview];
     }
@@ -60,6 +61,7 @@
         textSize.width += HORIZONTAL_PADDING*2;
         textSize.height += VERTICAL_PADDING*2;
         UILabel *label = nil;
+        [label addGestureRecognizer:tap];
         if (!gotPreviousFrame) {
             label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, textSize.width, textSize.height)];
             totalHeight = textSize.height;
