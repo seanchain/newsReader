@@ -195,6 +195,23 @@
             </objects>
             <point key="canvasLocation" x="-246.5" y="-375.5"/>
         </scene>
+        <!--Tag List-->
+        <scene sceneID="jw4-Ad-Rrj">
+            <objects>
+                <viewController id="Vj8-mG-vKA" customClass="TagList" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u6j-J4-tf0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="modal" identifier="main" id="SLL-7C-D7D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q5N-Nc-hMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1096.5" y="1712.5"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -360,7 +377,7 @@
                         <outlet property="idtext" destination="8Y9-As-EnN" id="JE5-d2-Kzl"/>
                         <outlet property="passwordcomfirmtext" destination="ZJf-Sa-zaX" id="g4l-Qj-w4Q"/>
                         <outlet property="passwordtext" destination="Wvf-Vb-Vub" id="sHp-kv-cct"/>
-                        <segue destination="49e-Tb-3d3" kind="modal" identifier="regbar" modalTransitionStyle="crossDissolve" id="QWc-SK-Fwq"/>
+                        <segue destination="Vj8-mG-vKA" kind="modal" identifier="regbar" id="kvL-R7-2in"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gh-X3-Bhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -379,7 +396,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QWc-SK-Fwq"/>
+        <segue reference="SLL-7C-D7D"/>
         <segue reference="SHE-Xh-EsQ"/>
     </inferredMetricsTieBreakers>
 </document>

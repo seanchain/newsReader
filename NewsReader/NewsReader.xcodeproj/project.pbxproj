@@ -21,6 +21,8 @@
 		770A73A51A9335CD0089A77B /* SKSplashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770A73A31A9335CD0089A77B /* SKSplashView.m */; };
 		770A73A71A9336A20089A77B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 770A73A61A9336A20089A77B /* logo.png */; };
 		770A73AA1A93442C0089A77B /* Func.m in Sources */ = {isa = PBXBuildFile; fileRef = 770A73A91A93442C0089A77B /* Func.m */; };
+		771F4D2E1AA21767001E1EB4 /* DWTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 771F4D2D1AA21767001E1EB4 /* DWTagList.m */; };
+		771F4D311AA21805001E1EB4 /* TagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 771F4D301AA21805001E1EB4 /* TagList.m */; };
 		7726E71E1AA0C0490002532C /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7726E71D1AA0C0490002532C /* VPImageCropperViewController.m */; };
 		7726E7201AA0D1BB0002532C /* testimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7726E71F1AA0D1BB0002532C /* testimg.png */; };
 		7726E7241AA0D4F60002532C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7726E7231AA0D4F60002532C /* icon.png */; };
@@ -88,6 +90,10 @@
 		770A73A61A9336A20089A77B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		770A73A81A93442C0089A77B /* Func.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Func.h; sourceTree = "<group>"; };
 		770A73A91A93442C0089A77B /* Func.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Func.m; sourceTree = "<group>"; };
+		771F4D2C1AA21767001E1EB4 /* DWTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTagList.h; sourceTree = "<group>"; };
+		771F4D2D1AA21767001E1EB4 /* DWTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTagList.m; sourceTree = "<group>"; };
+		771F4D2F1AA21805001E1EB4 /* TagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagList.h; sourceTree = "<group>"; };
+		771F4D301AA21805001E1EB4 /* TagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagList.m; sourceTree = "<group>"; };
 		7726E71C1AA0C0490002532C /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
 		7726E71D1AA0C0490002532C /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
 		7726E71F1AA0D1BB0002532C /* testimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testimg.png; sourceTree = "<group>"; };
@@ -229,6 +235,16 @@
 			path = SKSplashView;
 			sourceTree = "<group>";
 		};
+		771F4D2B1AA21767001E1EB4 /* DWTagList */ = {
+			isa = PBXGroup;
+			children = (
+				771F4D2C1AA21767001E1EB4 /* DWTagList.h */,
+				771F4D2D1AA21767001E1EB4 /* DWTagList.m */,
+			);
+			name = DWTagList;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		7726E71B1AA0C0490002532C /* VPImageCropper */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +273,8 @@
 				770A73A81A93442C0089A77B /* Func.h */,
 				770A73A91A93442C0089A77B /* Func.m */,
 				770A73791A930EC30089A77B /* Main.storyboard */,
+				771F4D2F1AA21805001E1EB4 /* TagList.h */,
+				771F4D301AA21805001E1EB4 /* TagList.m */,
 				77ECE3561AA1D7C3008537AB /* FindBackPassword.h */,
 				77ECE3571AA1D7C3008537AB /* FindBackPassword.m */,
 				77A86B5E1A939B130002EFDF /* ThirdViewController.h */,
@@ -273,6 +291,7 @@
 		7726E7271AA0D8710002532C /* Accessories */ = {
 			isa = PBXGroup;
 			children = (
+				771F4D2B1AA21767001E1EB4 /* DWTagList */,
 				77DE04761AA17E1200D76A60 /* AFNetworking */,
 				7726E71B1AA0C0490002532C /* VPImageCropper */,
 				77CA912B1A9B72C6004B6271 /* UUChart */,
@@ -449,6 +468,7 @@
 				77CA913B1A9B72C6004B6271 /* UUChartLabel.m in Sources */,
 				770A73721A930EC30089A77B /* AppDelegate.m in Sources */,
 				770A73A41A9335CD0089A77B /* SKSplashIcon.m in Sources */,
+				771F4D311AA21805001E1EB4 /* TagList.m in Sources */,
 				77A86B601A939B130002EFDF /* ThirdViewController.m in Sources */,
 				77DE050D1AA17E1200D76A60 /* AFHTTPRequestOperationManager.m in Sources */,
 				77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */,
@@ -459,6 +479,7 @@
 				77ECE3581AA1D7C3008537AB /* FindBackPassword.m in Sources */,
 				77DE05131AA17E1200D76A60 /* AFURLResponseSerialization.m in Sources */,
 				77DE05121AA17E1200D76A60 /* AFURLRequestSerialization.m in Sources */,
+				771F4D2E1AA21767001E1EB4 /* DWTagList.m in Sources */,
 				770A73A51A9335CD0089A77B /* SKSplashView.m in Sources */,
 				77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */,
 				77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */,
