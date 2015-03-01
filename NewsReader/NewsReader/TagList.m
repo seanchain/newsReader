@@ -14,10 +14,16 @@
 
 @implementation TagList
 
+@synthesize textfield;
+@synthesize buttonLook;
+
+NSMutableArray *array;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    tagList = [[DWTagList alloc] initWithFrame:CGRectMake(20.0f, 70.f, 280.0f, 300.0f)];
-    NSArray *array = [[NSArray alloc] initWithObjects:@"体育", @"生活", @"军事", @"科技", @"财经", @"社会", nil];
+    buttonLook.backgroundColor = [UIColor colorWithRed:0.19 green:0.49 blue:0.92 alpha:1];
+    tagList = [[DWTagList alloc] initWithFrame:CGRectMake(20.0f, 86.0f, 320.0f, 300.0f)];
+    array = [[NSMutableArray alloc] initWithObjects:@"金融", @"体育", @"生活", @"科技", @"军事", @"社会", nil];
     [tagList setTags:array];
     [self.view addSubview:tagList];
 }
@@ -27,14 +33,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)add:(id)sender {
+    NSString *str = textfield.text;
+    if (str != nil) {
+        [array addObject:str];
+    }
+    [tagList setTags:array];
+    [self.view addSubview:tagList];
+    textfield.text = nil;
+    [self.textfield resignFirstResponder];
 }
-*/
+
 
 @end

@@ -13,4 +13,11 @@
 {
     DWTagList *tagList;
 }
+
+
+@property (weak, nonatomic) IBOutlet UITextField *textfield;
+- (IBAction)add:(id)sender;
+- (IBAction)submit:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLook;
+
 @end
