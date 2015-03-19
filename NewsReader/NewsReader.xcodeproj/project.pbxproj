@@ -27,6 +27,9 @@
 		7726E7241AA0D4F60002532C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7726E7231AA0D4F60002532C /* icon.png */; };
 		7734D5AE1AA2BD6F0072B4A2 /* DWTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7734D5AD1AA2BD6F0072B4A2 /* DWTagList.m */; };
 		7734D5B01AA2BD960072B4A2 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 7734D5AF1AA2BD960072B4A2 /* check.png */; };
+		7772090B1ABB280000ABACED /* ZuSimpelColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7772090A1ABB280000ABACED /* ZuSimpelColor.m */; };
+		7772090E1ABB36B000ABACED /* loginUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772090D1ABB36B000ABACED /* loginUser.png */; };
+		777209101ABB3BE000ABACED /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772090F1ABB3BE000ABACED /* key.png */; };
 		77A86B601A939B130002EFDF /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86B5F1A939B130002EFDF /* ThirdViewController.m */; };
 		77A86B801A942E510002EFDF /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7D1A942E510002EFDF /* recommend.png */; };
 		77A86B811A942E510002EFDF /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7E1A942E510002EFDF /* news.png */; };
@@ -100,6 +103,10 @@
 		7734D5AC1AA2BD6F0072B4A2 /* DWTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTagList.h; sourceTree = "<group>"; };
 		7734D5AD1AA2BD6F0072B4A2 /* DWTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTagList.m; sourceTree = "<group>"; };
 		7734D5AF1AA2BD960072B4A2 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		777209091ABB280000ABACED /* ZuSimpelColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZuSimpelColor.h; sourceTree = "<group>"; };
+		7772090A1ABB280000ABACED /* ZuSimpelColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZuSimpelColor.m; sourceTree = "<group>"; };
+		7772090D1ABB36B000ABACED /* loginUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginUser.png; sourceTree = "<group>"; };
+		7772090F1ABB3BE000ABACED /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
 		77A86B5E1A939B130002EFDF /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		77A86B5F1A939B130002EFDF /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		77A86B7D1A942E510002EFDF /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
@@ -195,6 +202,8 @@
 		770A736C1A930EC30089A77B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7772090D1ABB36B000ABACED /* loginUser.png */,
+				7772090F1ABB3BE000ABACED /* key.png */,
 				7734D5AF1AA2BD960072B4A2 /* check.png */,
 				77DE056B1AA1A39600D76A60 /* portrait.jpg */,
 				7726E7231AA0D4F60002532C /* icon.png */,
@@ -324,6 +333,7 @@
 		7726E7271AA0D8710002532C /* Accessories */ = {
 			isa = PBXGroup;
 			children = (
+				7772090C1ABB281000ABACED /* ZuSimpelColor */,
 				7734D5AB1AA2BD6F0072B4A2 /* DWList */,
 				77DE04761AA17E1200D76A60 /* AFNetworking */,
 				7726E71B1AA0C0490002532C /* VPImageCropper */,
@@ -341,6 +351,15 @@
 			);
 			name = DWList;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		7772090C1ABB281000ABACED /* ZuSimpelColor */ = {
+			isa = PBXGroup;
+			children = (
+				777209091ABB280000ABACED /* ZuSimpelColor.h */,
+				7772090A1ABB280000ABACED /* ZuSimpelColor.m */,
+			);
+			name = ZuSimpelColor;
 			sourceTree = "<group>";
 		};
 		77CA912B1A9B72C6004B6271 /* UUChart */ = {
@@ -469,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				777209101ABB3BE000ABACED /* key.png in Resources */,
 				770A737B1A930EC30089A77B /* Main.storyboard in Resources */,
 				7734D5B01AA2BD960072B4A2 /* check.png in Resources */,
 				77A86B821A942E510002EFDF /* user.png in Resources */,
@@ -478,6 +498,7 @@
 				77A86B811A942E510002EFDF /* news.png in Resources */,
 				7726E7241AA0D4F60002532C /* icon.png in Resources */,
 				770A73801A930EC30089A77B /* LaunchScreen.xib in Resources */,
+				7772090E1ABB36B000ABACED /* loginUser.png in Resources */,
 				77DE056C1AA1A39600D76A60 /* portrait.jpg in Resources */,
 				770A737D1A930EC30089A77B /* Images.xcassets in Resources */,
 				7726E7201AA0D1BB0002532C /* testimg.png in Resources */,
@@ -501,6 +522,7 @@
 			files = (
 				770A73AA1A93442C0089A77B /* Func.m in Sources */,
 				77CA913C1A9B72C6004B6271 /* UUColor.m in Sources */,
+				7772090B1ABB280000ABACED /* ZuSimpelColor.m in Sources */,
 				770A73971A9312340089A77B /* LoginController.m in Sources */,
 				770A73781A930EC30089A77B /* SecondViewController.m in Sources */,
 				77DE05111AA17E1200D76A60 /* AFURLConnectionOperation.m in Sources */,
