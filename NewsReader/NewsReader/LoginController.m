@@ -61,9 +61,23 @@
         [self twitterSplash];
         count ++;
     }
-    UIImage *background = [UIImage imageNamed:@"Background.jpg"];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:background];
+    //UIImage *background = [UIImage imageNamed:@"Background.jpg"];
+    self.view.backgroundColor = [self colorOfR:0 G:206 B:209];
+    UIView *paddingView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
+    UIView *paddingView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
+    self.idoremail.leftView = paddingView1;
+    idoremail.leftViewMode = UITextFieldViewModeAlways;
+    self.passwd.leftView = paddingView2;
+    passwd.leftViewMode = UITextFieldViewModeAlways;
+    self.idoremail.borderStyle = UITextBorderStyleNone;
+    self.passwd.borderStyle = UITextBorderStyleNone;
 }
+
+- (UIColor *) colorOfR:(NSUInteger)r G:(NSUInteger)g B:(NSUInteger)b
+{
+    return [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f];
+}
+
 
 
 
