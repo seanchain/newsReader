@@ -21,7 +21,7 @@
 #define blueviolet [ZuSimpelColor R:138 G:43 B:226] //紫罗兰色
 #define brown [ZuSimpelColor R:165 G:42 B:42] //棕色
 #define burlywood [ZuSimpelColor R:222 G:184 B:135] //实木色
-#define eadetbhle [ZuSimpelColor R:95 G:158 B:160] //军蓝色
+#define eadetblue [ZuSimpelColor R:95 G:158 B:160] //军蓝色
 #define chartreuse [ZuSimpelColor R:127 G:255 B:0] //黄绿色
 #define chocolate [ZuSimpelColor R:210 G:105 B:30] //巧克力色
 #define coral [ZuSimpelColor R:255 G:127 B:80] //珊瑚色
@@ -146,7 +146,8 @@
 #define whitesmoke [ZuSimpelColor R:245 G:245 B:245] //烟白色
 #define yellow [ZuSimpelColor R:255 G:255 B:0] //黄色
 #define yellowgreen [ZuSimpelColor R:154 G:205 B:50] //黄绿色
-
+#define doubi [ZuSimpelColor R:233 G:233 B:233] //逗比色
+#define bgcolor [ZuSimpelColor R:0 G:135 B:190] //背景色
 
 
 

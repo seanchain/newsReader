@@ -12,6 +12,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Func.h"
 #import "AFNetworking.h"
+#import "ZuSimpelColor.h"
 
 #define ORIGINAL_MAX_WIDTH 640.0f
 
@@ -34,7 +35,55 @@
     UIImage *bg = [UIImage imageNamed:@"Background.jpg"];
     [self.view addSubview:self.portraitImageView];
     [self loadPortrait];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:bg];
+    self.view.backgroundColor = bgcolor;
+    UIView *paddingView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
+    UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
+    UIView *paddingView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
+    UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
+    UIView *paddingView3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
+    UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
+    UIView *paddingView4 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
+    UIImageView *imgView4 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
+    [imgView1 setImage:[UIImage imageNamed:@"mail.png"]];
+    [imgView2 setImage:[UIImage imageNamed:@"user.png"]];
+    [imgView3 setImage:[UIImage imageNamed:@"key.png"]];
+    [imgView4 setImage:[UIImage imageNamed:@"lock.png"]];
+    [paddingView1 addSubview:imgView1];
+    [paddingView2 addSubview:imgView2];
+    [paddingView3 addSubview:imgView3];
+    [paddingView4 addSubview:imgView4];
+    self.emailtext.leftView = paddingView1;
+    emailtext.leftViewMode = UITextFieldViewModeAlways;
+    self.idtext.leftView = paddingView2;
+    idtext.leftViewMode = UITextFieldViewModeAlways;
+    self.passwordtext.leftView = paddingView3;
+    passwordtext.leftViewMode = UITextFieldViewModeAlways;
+    self.passwordcomfirmtext.leftView = paddingView4;
+    passwordcomfirmtext.leftViewMode = UITextFieldViewModeAlways;
+    self.emailtext.borderStyle = UITextBorderStyleNone;
+    self.idtext.borderStyle = UITextBorderStyleNone;
+    UIView *topBorder1 = [[UIView alloc]
+                         initWithFrame:CGRectMake(10,
+                                                  0,
+                                                  idtext.frame.size.width - 20,
+                                                  1.0f)];
+    UIView *topBorder2 = [[UIView alloc]
+                          initWithFrame:CGRectMake(10,
+                                                   0,
+                                                   idtext.frame.size.width - 20,
+                                                   1.0f)];
+    UIView *topBorder3 = [[UIView alloc]
+                          initWithFrame:CGRectMake(10,
+                                                   0,
+                                                   idtext.frame.size.width - 20,
+                                                   1.0f)];
+    
+    topBorder1.backgroundColor = doubi;
+    topBorder2.backgroundColor = doubi;
+    topBorder3.backgroundColor = doubi;
+    [idtext addSubview:topBorder1];
+    [passwordtext addSubview:topBorder2];
+    [passwordcomfirmtext addSubview:topBorder3];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -27,6 +27,8 @@
 		7726E7241AA0D4F60002532C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7726E7231AA0D4F60002532C /* icon.png */; };
 		7734D5AE1AA2BD6F0072B4A2 /* DWTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7734D5AD1AA2BD6F0072B4A2 /* DWTagList.m */; };
 		7734D5B01AA2BD960072B4A2 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 7734D5AF1AA2BD960072B4A2 /* check.png */; };
+		7762C41B1ABBEC5B005725B6 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 7762C41A1ABBEC5B005725B6 /* mail.png */; };
+		7762C41D1ABBEC90005725B6 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 7762C41C1ABBEC90005725B6 /* lock.png */; };
 		7772090B1ABB280000ABACED /* ZuSimpelColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7772090A1ABB280000ABACED /* ZuSimpelColor.m */; };
 		7772090E1ABB36B000ABACED /* loginUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772090D1ABB36B000ABACED /* loginUser.png */; };
 		777209101ABB3BE000ABACED /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772090F1ABB3BE000ABACED /* key.png */; };
@@ -103,6 +105,8 @@
 		7734D5AC1AA2BD6F0072B4A2 /* DWTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTagList.h; sourceTree = "<group>"; };
 		7734D5AD1AA2BD6F0072B4A2 /* DWTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTagList.m; sourceTree = "<group>"; };
 		7734D5AF1AA2BD960072B4A2 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		7762C41A1ABBEC5B005725B6 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
+		7762C41C1ABBEC90005725B6 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		777209091ABB280000ABACED /* ZuSimpelColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZuSimpelColor.h; sourceTree = "<group>"; };
 		7772090A1ABB280000ABACED /* ZuSimpelColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZuSimpelColor.m; sourceTree = "<group>"; };
 		7772090D1ABB36B000ABACED /* loginUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginUser.png; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 		770A736C1A930EC30089A77B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7762C41C1ABBEC90005725B6 /* lock.png */,
+				7762C41A1ABBEC5B005725B6 /* mail.png */,
 				7772090D1ABB36B000ABACED /* loginUser.png */,
 				7772090F1ABB3BE000ABACED /* key.png */,
 				7734D5AF1AA2BD960072B4A2 /* check.png */,
@@ -490,6 +496,7 @@
 			files = (
 				777209101ABB3BE000ABACED /* key.png in Resources */,
 				770A737B1A930EC30089A77B /* Main.storyboard in Resources */,
+				7762C41D1ABBEC90005725B6 /* lock.png in Resources */,
 				7734D5B01AA2BD960072B4A2 /* check.png in Resources */,
 				77A86B821A942E510002EFDF /* user.png in Resources */,
 				77A86B801A942E510002EFDF /* recommend.png in Resources */,
@@ -502,6 +509,7 @@
 				77DE056C1AA1A39600D76A60 /* portrait.jpg in Resources */,
 				770A737D1A930EC30089A77B /* Images.xcassets in Resources */,
 				7726E7201AA0D1BB0002532C /* testimg.png in Resources */,
+				7762C41B1ABBEC5B005725B6 /* mail.png in Resources */,
 				77DD62501A974AE700C1FEF4 /* Background.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

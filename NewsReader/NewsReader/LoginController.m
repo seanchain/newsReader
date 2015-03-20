@@ -63,7 +63,7 @@
         count ++;
     }
     //UIImage *background = [UIImage imageNamed:@"Background.jpg"];
-    self.view.backgroundColor = darkcyan;
+    self.view.backgroundColor = bgcolor;
     UIView *paddingView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
     UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
     UIView *paddingView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
@@ -83,7 +83,7 @@
                                                   0,
                                                   passwd.frame.size.width - 20,
                                                   1.0f)];
-    topBorder.backgroundColor = lightgray;
+    topBorder.backgroundColor = doubi;
     [passwd addSubview:topBorder];
     
 }
@@ -189,8 +189,6 @@
         _portraitImageView.layer.borderWidth = 0;
         _portraitImageView.userInteractionEnabled = YES;
         _portraitImageView.backgroundColor = [UIColor blackColor];
-        UITapGestureRecognizer *portraitTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editPortrait)];
-        [_portraitImageView addGestureRecognizer:portraitTap];
     }
     return _portraitImageView;
 }
