@@ -111,6 +111,8 @@
     NSString *res = [Func webRequestWith:url and:poststr];
     if ([res isEqualToString:@"success"]) {
         [self uploadPortrait:userid]; //先上传头像文件
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject:userid forKey:@"user"];
         [self performSegueWithIdentifier:@"regbar" sender:self];
     }
     else [Func showAlert:res];

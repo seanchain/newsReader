@@ -50,42 +50,50 @@
     [_splashView startAnimation];
 }
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-    //准备使用一个沙箱文件来确定是否已经进行了登录。
-    static int count = 0;
-    [super viewDidLoad];
-    [passwd addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventAllTouchEvents];
-    [self.view addSubview:self.portraitImageView];
-    [self loadPortrait];
-    if (count == 0) {
-        [self twitterSplash];
-        count ++;
+    //使用userDefault来进行用户信息的判断
+    if (self.isValidUser) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        view.backgroundColor = whitesmoke;
+        [self.view addSubview:view];
+        [self performSegueWithIdentifier:@"tabbar" sender:self];
     }
-    //UIImage *background = [UIImage imageNamed:@"Background.jpg"];
-    self.view.backgroundColor = bgcolor;
-    UIView *paddingView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
-    UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
-    UIView *paddingView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
-    UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
-    [imgView1 setImage:[UIImage imageNamed:@"user.png"]];
-    [imgView2 setImage:[UIImage imageNamed:@"key.png"]];
-    [paddingView1 addSubview:imgView1];
-    [paddingView2 addSubview:imgView2];
-    self.idoremail.leftView = paddingView1;
-    idoremail.leftViewMode = UITextFieldViewModeAlways;
-    self.passwd.leftView = paddingView2;
-    passwd.leftViewMode = UITextFieldViewModeAlways;
-    self.idoremail.borderStyle = UITextBorderStyleNone;
-    self.passwd.borderStyle = UITextBorderStyleNone;
-    UIView *topBorder = [[UIView alloc]
-                         initWithFrame:CGRectMake(10,
-                                                  0,
-                                                  passwd.frame.size.width - 20,
-                                                  1.0f)];
-    topBorder.backgroundColor = doubi;
-    [passwd addSubview:topBorder];
-    
+    else {
+        static int count = 0;
+        
+        [passwd addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventAllTouchEvents];
+        [self.view addSubview:self.portraitImageView];
+        [self loadPortrait];
+        if (count == 0) {
+            [self twitterSplash];
+            count ++;
+        }
+        //UIImage *background = [UIImage imageNamed:@"Background.jpg"];
+        self.view.backgroundColor = bgcolor;
+        UIView *paddingView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
+        UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
+        UIView *paddingView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 38, 20)];
+        UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 18, 18)];
+        [imgView1 setImage:[UIImage imageNamed:@"user.png"]];
+        [imgView2 setImage:[UIImage imageNamed:@"key.png"]];
+        [paddingView1 addSubview:imgView1];
+        [paddingView2 addSubview:imgView2];
+        self.idoremail.leftView = paddingView1;
+        idoremail.leftViewMode = UITextFieldViewModeAlways;
+        self.passwd.leftView = paddingView2;
+        passwd.leftViewMode = UITextFieldViewModeAlways;
+        self.idoremail.borderStyle = UITextBorderStyleNone;
+        self.passwd.borderStyle = UITextBorderStyleNone;
+        UIView *topBorder = [[UIView alloc]
+                             initWithFrame:CGRectMake(10,
+                                                      0,
+                                                      passwd.frame.size.width - 20,
+                                                      1.0f)];
+        topBorder.backgroundColor = doubi;
+        [passwd addSubview:topBorder];
+        
+    }
 }
 
 
@@ -109,8 +117,16 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"FAILURE : %@ --> %@", operation.responseString, error);
     }];
-    
-    
+}
+
+- (BOOL)isValidUser
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if ([ud valueForKey:@"user"]) {
+        return NO;
+    }
+    else
+        return NO;
 }
 
 - (void)getPic:(NSString*)response{
@@ -139,7 +155,9 @@
     NSLog(@"%@", res);
     if ([res isEqualToString:@"success"]) {
         NSLog(@"Login successfully");
-        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:user forKey:@"user"];
+        [userDefaults setObject:password forKey:@"password"];
         [self performSegueWithIdentifier:@"tabbar" sender:self];
     }
     else{

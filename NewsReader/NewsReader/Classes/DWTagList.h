@@ -22,5 +22,6 @@
 - (void)setTags:(NSArray *)array;
 - (void)display;
 - (CGSize)fittedSize;
++ (NSMutableSet *)returnSet;
 
 @end

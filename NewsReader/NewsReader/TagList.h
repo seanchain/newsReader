@@ -19,5 +19,6 @@
 - (IBAction)add:(id)sender;
 - (IBAction)submit:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLook;
+- (IBAction)submit:(id)sender;
 
 @end

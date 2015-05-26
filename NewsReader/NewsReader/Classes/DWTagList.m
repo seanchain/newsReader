@@ -139,4 +139,9 @@ NSMutableSet *set;
     return sizeFit;
 }
 
++ (NSMutableSet *)returnSet
+{
+    return set;
+}
+
 @end
