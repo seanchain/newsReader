@@ -10,4 +10,6 @@
 
 @interface AboutController : UIViewController
 
+@property (nonatomic, strong) id indexpath;
+
 @end

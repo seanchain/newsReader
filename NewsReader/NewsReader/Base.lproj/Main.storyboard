@@ -120,7 +120,7 @@
             </objects>
             <point key="canvasLocation" x="1419.5" y="-138.5"/>
         </scene>
-        <!--用户-->
+        <!--用户管理-->
         <scene sceneID="KGb-kd-rSV">
             <objects>
                 <viewController id="s7Q-mH-LiJ" customClass="ThirdViewController" sceneMemberID="viewController">
@@ -132,31 +132,49 @@
                     <tabBarItem key="tabBarItem" title="用户" image="user.png" id="8iy-nq-ZeT">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="1"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" id="JOA-Fd-PqY"/>
+                    <navigationItem key="navigationItem" title="用户管理" id="JOA-Fd-PqY">
+                        <barButtonItem key="backBarButtonItem" title="后退" id="pue-M1-E5b"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="cx6-q7-XYo" kind="modal" identifier="about" id="tVK-KT-Tv6"/>
+                        <segue destination="cx6-q7-XYo" kind="push" identifier="about" id="tVK-KT-Tv6"/>
                         <segue destination="Ukh-m1-wS7" kind="modal" identifier="info" id="OVb-sx-2Yl"/>
-                        <segue destination="HjB-1A-JuC" kind="modal" identifier="theme" id="Wx0-FS-jbf"/>
+                        <segue destination="HjB-1A-JuC" kind="push" identifier="theme" id="Wx0-FS-jbf"/>
+                        <segue destination="6Z5-Qw-yA3" kind="modal" identifier="backlogin" id="6Lt-Aj-8Rq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZxN-YE-fzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-686.5" y="3832.5"/>
+            <point key="canvasLocation" x="-955.5" y="856.5"/>
         </scene>
         <!--Theme Controller-->
         <scene sceneID="13m-dk-4zU">
             <objects>
                 <viewController id="HjB-1A-JuC" customClass="ThemeController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J51-Af-InI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="X9Q-4B-6B3" customClass="IZValueSelectorView">
+                                <rect key="frame" x="93" y="19" width="168" height="560"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.png" id="TrP-HJ-XR9">
+                                <rect key="frame" x="269" y="272" width="55" height="54"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hwh-Cu-D29"/>
+                    <connections>
+                        <outlet property="selectorVertical" destination="X9Q-4B-6B3" id="Etd-SL-Jq0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GyK-WM-0cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207.5" y="3935.5"/>
+            <point key="canvasLocation" x="-450.5" y="3926.5"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="xF8-ml-L9P">
@@ -513,14 +531,24 @@
             <objects>
                 <viewController id="cx6-q7-XYo" customClass="AboutController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YBQ-C7-axT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello, worlder" id="7Ej-64-QVw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oIu-3s-4kg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gI-nP-KS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-647.5" y="2984.5"/>
+            <point key="canvasLocation" x="-435.5" y="3118.5"/>
         </scene>
         <!--Preference Controller-->
         <scene sceneID="7GD-t6-F0l">
@@ -538,6 +566,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.png" width="640" height="320"/>
         <image name="news.png" width="32" height="32"/>
         <image name="recommend.png" width="32" height="32"/>
         <image name="user.png" width="32" height="32"/>
@@ -549,6 +578,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="SLL-7C-D7D"/>
-        <segue reference="Thc-Ty-fd3"/>
+        <segue reference="6Lt-Aj-8Rq"/>
     </inferredMetricsTieBreakers>
 </document>

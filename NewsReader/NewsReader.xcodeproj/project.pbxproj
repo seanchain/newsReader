@@ -40,6 +40,10 @@
 		77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BCF1A94BB380002EFDF /* TableViewCell.m */; };
 		77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A86BD11A94C14C0002EFDF /* TableViewCell.xib */; };
 		77C3C3041B14B755004B12DA /* ThemeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3C3031B14B755004B12DA /* ThemeController.m */; };
+		77C3C3071B14B96F004B12DA /* IZValueSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3C3061B14B96F004B12DA /* IZValueSelectorView.m */; };
+		77C3C3091B14BACB004B12DA /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 77C3C3081B14BACB004B12DA /* arrow.png */; };
+		77C3C3141B14BEB5004B12DA /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3C3111B14BEB5004B12DA /* AboutController.m */; };
+		77C3C3151B14BEB5004B12DA /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3C3131B14BEB5004B12DA /* PreferenceController.m */; };
 		77CA91381A9B72C6004B6271 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912D1A9B72C6004B6271 /* UUBar.m */; };
 		77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912F1A9B72C6004B6271 /* UUBarChart.m */; };
 		77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA91311A9B72C6004B6271 /* UUChart.m */; };
@@ -124,6 +128,13 @@
 		77A86BD11A94C14C0002EFDF /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		77C3C3021B14B755004B12DA /* ThemeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeController.h; sourceTree = "<group>"; };
 		77C3C3031B14B755004B12DA /* ThemeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeController.m; sourceTree = "<group>"; };
+		77C3C3051B14B96F004B12DA /* IZValueSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZValueSelectorView.h; sourceTree = "<group>"; };
+		77C3C3061B14B96F004B12DA /* IZValueSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IZValueSelectorView.m; sourceTree = "<group>"; };
+		77C3C3081B14BACB004B12DA /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		77C3C3101B14BEB5004B12DA /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		77C3C3111B14BEB5004B12DA /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		77C3C3121B14BEB5004B12DA /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
+		77C3C3131B14BEB5004B12DA /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
 		77CA912C1A9B72C6004B6271 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
 		77CA912D1A9B72C6004B6271 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		77CA912E1A9B72C6004B6271 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
@@ -209,6 +220,7 @@
 		770A736C1A930EC30089A77B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				77C3C3081B14BACB004B12DA /* arrow.png */,
 				7762C41C1ABBEC90005725B6 /* lock.png */,
 				7762C41A1ABBEC5B005725B6 /* mail.png */,
 				7772090D1ABB36B000ABACED /* loginUser.png */,
@@ -344,6 +356,12 @@
 		7726E7271AA0D8710002532C /* Accessories */ = {
 			isa = PBXGroup;
 			children = (
+				77C3C3101B14BEB5004B12DA /* AboutController.h */,
+				77C3C3111B14BEB5004B12DA /* AboutController.m */,
+				77C3C3121B14BEB5004B12DA /* PreferenceController.h */,
+				77C3C3131B14BEB5004B12DA /* PreferenceController.m */,
+				77C3C3051B14B96F004B12DA /* IZValueSelectorView.h */,
+				77C3C3061B14B96F004B12DA /* IZValueSelectorView.m */,
 				7772090C1ABB281000ABACED /* ZuSimpelColor */,
 				7734D5AB1AA2BD6F0072B4A2 /* DWList */,
 				77DE04761AA17E1200D76A60 /* AFNetworking */,
@@ -512,6 +530,7 @@
 				770A73801A930EC30089A77B /* LaunchScreen.xib in Resources */,
 				7772090E1ABB36B000ABACED /* loginUser.png in Resources */,
 				77DE056C1AA1A39600D76A60 /* portrait.jpg in Resources */,
+				77C3C3091B14BACB004B12DA /* arrow.png in Resources */,
 				770A737D1A930EC30089A77B /* Images.xcassets in Resources */,
 				7726E7201AA0D1BB0002532C /* testimg.png in Resources */,
 				7762C41B1ABBEC5B005725B6 /* mail.png in Resources */,
@@ -546,12 +565,14 @@
 				77A86B851A9433A30002EFDF /* NewsContent.m in Sources */,
 				77CA913B1A9B72C6004B6271 /* UUChartLabel.m in Sources */,
 				770A73721A930EC30089A77B /* AppDelegate.m in Sources */,
+				77C3C3141B14BEB5004B12DA /* AboutController.m in Sources */,
 				770A73A41A9335CD0089A77B /* SKSplashIcon.m in Sources */,
 				771F4D311AA21805001E1EB4 /* TagList.m in Sources */,
 				77A86B601A939B130002EFDF /* ThirdViewController.m in Sources */,
 				7734D5AE1AA2BD6F0072B4A2 /* DWTagList.m in Sources */,
 				77DE050D1AA17E1200D76A60 /* AFHTTPRequestOperationManager.m in Sources */,
 				77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */,
+				77C3C3151B14BEB5004B12DA /* PreferenceController.m in Sources */,
 				77DE050C1AA17E1200D76A60 /* AFHTTPRequestOperation.m in Sources */,
 				77DE05141AA17E1200D76A60 /* AFURLSessionManager.m in Sources */,
 				77CA91381A9B72C6004B6271 /* UUBar.m in Sources */,
@@ -565,6 +586,7 @@
 				77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */,
 				770A73751A930EC30089A77B /* FirstViewController.m in Sources */,
 				7726E71E1AA0C0490002532C /* VPImageCropperViewController.m in Sources */,
+				77C3C3071B14B96F004B12DA /* IZValueSelectorView.m in Sources */,
 				770A736F1A930EC30089A77B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
