@@ -534,10 +534,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello, worlder" id="7Ej-64-QVw">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7Ej-64-QVw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">本项目是基于Web的新闻爬去和推荐以及性格引导系统的移动客户端，主要包含的功能如下：
+
+1. 用户可以设置自己关注的新闻关键词，并在每次刷新界面是获得对应的关键词的新闻内容列表，供用户浏览。
+
+2.用户可以查看自己浏览新闻的历史记录，了解自己平时阅读得最多的新闻，然后得到自己的性格特点，并可以获得反推荐的新闻来达到性格引导的作用。
+
+3. 个人信息管理与偏好设置
+
+项目版本：v0.0.1</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -562,7 +571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrV-TF-sQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60" y="3248"/>
+            <point key="canvasLocation" x="-116.5" y="3202.5"/>
         </scene>
     </scenes>
     <resources>
