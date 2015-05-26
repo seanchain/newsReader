@@ -47,8 +47,6 @@ NSMutableArray *array;
 
 
 - (IBAction)submit:(id)sender {
-    
-    [Func showAlert:@"Hello, worlder"];
     NSLog(@"****%@****", [DWTagList returnSet]);
     NSSet *set = [DWTagList returnSet];
     NSLog(@"SET HERE: %@", set);
@@ -71,5 +69,6 @@ NSMutableArray *array;
     NSString *res = [Func webRequestWith:@"http://www.chensihang.com/iostest/newsPref.php" and:postvars]; //发送保存用户信息的post请求
     
     NSLog(@"Respond Here: %@", res);
+    [self performSegueWithIdentifier:@"main" sender:self.view];
 }
 @end

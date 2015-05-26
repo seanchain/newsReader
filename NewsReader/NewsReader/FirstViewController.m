@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "NewsContent.h"
 #import "UUColor.h"
+#import "Func.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface FirstViewController ()
 
@@ -27,12 +29,15 @@ NSIndexPath *idxpth;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getUserPortraitAsync];
+    NSArray *favstr = [self getUserFav];
     // Do any additional setup after loading the view, typically from a nib.
     float x = self.view.frame.size.width;
     float y = self.view.frame.size.height;
     toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, y * 0.09, x, y * 0.07)];
     //将来添加获得用户喜好关键词的语句
-    NSArray *favstr = @[@"全部", @"iOS8", @"Android5.0", @"拜仁慕尼黑", @"iMac 5k"];
+    [Func webRequestWith:@"" and:@""];
+    // NSArray *favstr = @[@"全部", @"iOS8", @"Android5.0", @"拜仁慕尼黑", @"iMac 5k"];
     //关键词对应的都有自己的新闻链接网址，只需要将网址中的内容放到相对应的tableview cell中
     NSArray *fav = [self transferButtonArray:favstr];
     [toolbar setItems:fav animated:YES];
@@ -44,7 +49,27 @@ NSIndexPath *idxpth;
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];
-    newstitle = @[@"拜仁1-1憾平矿工", @"苹果加大Apple Watch生产"];
+    newstitle = @[@"拜仁1-1憾平矿工", @"苹果加大Apple Watch生产"]; //将来
+    // newstitle = [self getNewsTitle];
+}
+
+- (NSArray *)getNewsTitle
+{
+    NSLog(@"HERE IS THE METHOD THAT WILL GET THE NEWS TITLE IN THE FUTURE");
+    return nil;
+}
+
+- (NSArray*)getUserFav
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *urlstr = [NSString stringWithFormat:@"http://www.chensihang.com/iostest/getKeyword.php?username=%@", [ud objectForKey:@"user"]];
+    NSURL *url = [NSURL URLWithString:urlstr];
+    NSString *response = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    response = [response stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSLog(@"%@", response);
+    NSArray *ary = [response componentsSeparatedByString:@","];
+    NSLog(@"%@", ary);
+    return ary;
 }
 
 
@@ -105,6 +130,27 @@ NSIndexPath *idxpth;
         [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     }
     [self performSegueWithIdentifier:@"newscontent" sender:self.view];
+}
+
+- (void)getUserPortraitAsync
+{
+    NSLog(@"trying to download the image");
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *user = [ud valueForKey:@"user"];
+    NSString *url = [NSString stringWithFormat:@"http://www.chensihang.com/iostest/portraits/%@.jpg", user];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+    requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+        NSData *portraitData = [NSKeyedArchiver archivedDataWithRootObject:responseObject];
+        [ud setValue:portraitData forKey:@"portrait"];
+        NSLog(@"portrait load");
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Image error: %@", error);
+    }];
+    [requestOperation start];
 }
 
 - (void)didReceiveMemoryWarning {

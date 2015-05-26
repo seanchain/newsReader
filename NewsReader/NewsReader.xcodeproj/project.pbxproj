@@ -39,6 +39,7 @@
 		77A86B851A9433A30002EFDF /* NewsContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86B841A9433A30002EFDF /* NewsContent.m */; };
 		77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86BCF1A94BB380002EFDF /* TableViewCell.m */; };
 		77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A86BD11A94C14C0002EFDF /* TableViewCell.xib */; };
+		77C3C3041B14B755004B12DA /* ThemeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C3C3031B14B755004B12DA /* ThemeController.m */; };
 		77CA91381A9B72C6004B6271 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912D1A9B72C6004B6271 /* UUBar.m */; };
 		77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA912F1A9B72C6004B6271 /* UUBarChart.m */; };
 		77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA91311A9B72C6004B6271 /* UUChart.m */; };
@@ -121,6 +122,8 @@
 		77A86BCE1A94BB380002EFDF /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		77A86BCF1A94BB380002EFDF /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		77A86BD11A94C14C0002EFDF /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		77C3C3021B14B755004B12DA /* ThemeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeController.h; sourceTree = "<group>"; };
+		77C3C3031B14B755004B12DA /* ThemeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeController.m; sourceTree = "<group>"; };
 		77CA912C1A9B72C6004B6271 /* UUBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBar.h; sourceTree = "<group>"; };
 		77CA912D1A9B72C6004B6271 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		77CA912E1A9B72C6004B6271 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				771F4D361AA21B70001E1EB4 /* FunctionViews */,
 				771F4D321AA21AF4001E1EB4 /* LoginAndRegister */,
 				770A73791A930EC30089A77B /* Main.storyboard */,
+				77C3C3021B14B755004B12DA /* ThemeController.h */,
+				77C3C3031B14B755004B12DA /* ThemeController.m */,
 				770A737C1A930EC30089A77B /* Images.xcassets */,
 				770A737E1A930EC30089A77B /* LaunchScreen.xib */,
 				770A736C1A930EC30089A77B /* Supporting Files */,
@@ -555,6 +560,7 @@
 				77DE05131AA17E1200D76A60 /* AFURLResponseSerialization.m in Sources */,
 				77DE05121AA17E1200D76A60 /* AFURLRequestSerialization.m in Sources */,
 				770A73A51A9335CD0089A77B /* SKSplashView.m in Sources */,
+				77C3C3041B14B755004B12DA /* ThemeController.m in Sources */,
 				77CA913A1A9B72C6004B6271 /* UUChart.m in Sources */,
 				77A86BD01A94BB380002EFDF /* TableViewCell.m in Sources */,
 				770A73751A930EC30089A77B /* FirstViewController.m in Sources */,

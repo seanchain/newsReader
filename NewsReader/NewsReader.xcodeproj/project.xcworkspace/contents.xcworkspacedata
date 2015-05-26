@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../NewsReader/PreferenceController.h">
+   </FileRef>
+   <FileRef
+      location = "group:../NewsReader/PreferenceController.m">
+   </FileRef>
+   <FileRef
+      location = "group:../NewsReader/AboutController.h">
+   </FileRef>
+   <FileRef
+      location = "group:../NewsReader/AboutController.m">
+   </FileRef>
+   <FileRef
       location = "self:NewsReader.xcodeproj">
    </FileRef>
 </Workspace>
