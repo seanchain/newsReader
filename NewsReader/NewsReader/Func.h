@@ -12,5 +12,5 @@
 
 + (NSString *)webRequestWith:(NSString *)url and:(NSString*)postInfo;
 + (void)showAlert:(NSString *)str;
-
++ (NSArray *)getUserFav;
 @end

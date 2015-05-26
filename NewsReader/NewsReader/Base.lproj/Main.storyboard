@@ -138,7 +138,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="cx6-q7-XYo" kind="push" identifier="about" id="tVK-KT-Tv6"/>
-                        <segue destination="Ukh-m1-wS7" kind="modal" identifier="info" id="OVb-sx-2Yl"/>
+                        <segue destination="Ukh-m1-wS7" kind="push" identifier="info" id="OVb-sx-2Yl"/>
                         <segue destination="HjB-1A-JuC" kind="push" identifier="theme" id="Wx0-FS-jbf"/>
                         <segue destination="6Z5-Qw-yA3" kind="modal" identifier="backlogin" id="6Lt-Aj-8Rq"/>
                     </connections>
@@ -559,19 +559,39 @@
             </objects>
             <point key="canvasLocation" x="-435.5" y="3118.5"/>
         </scene>
-        <!--Preference Controller-->
+        <!--Item-->
         <scene sceneID="7GD-t6-F0l">
             <objects>
                 <viewController id="Ukh-m1-wS7" customClass="PreferenceController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ze4-aP-Y0j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aqu-1f-hVn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Fvx-NX-ArL"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="D5Y-xF-sPx">
+                        <barButtonItem key="rightBarButtonItem" title="添加" id="btb-KE-wku">
+                            <connections>
+                                <action selector="add:" destination="Ukh-m1-wS7" id="lId-Ba-Aic"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="table" destination="aqu-1f-hVn" id="WqU-IM-iQm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrV-TF-sQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-116.5" y="3202.5"/>
+            <point key="canvasLocation" x="24.5" y="3182.5"/>
         </scene>
     </scenes>
     <resources>

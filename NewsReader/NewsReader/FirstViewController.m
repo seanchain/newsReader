@@ -27,10 +27,10 @@ UITableView *table;
 
 NSIndexPath *idxpth;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:NO];
     [self getUserPortraitAsync];
-    NSArray *favstr = [self getUserFav];
+    NSArray *favstr = [Func getUserFav];
     // Do any additional setup after loading the view, typically from a nib.
     float x = self.view.frame.size.width;
     float y = self.view.frame.size.height;
@@ -59,18 +59,7 @@ NSIndexPath *idxpth;
     return nil;
 }
 
-- (NSArray*)getUserFav
-{
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSString *urlstr = [NSString stringWithFormat:@"http://www.chensihang.com/iostest/getKeyword.php?username=%@", [ud objectForKey:@"user"]];
-    NSURL *url = [NSURL URLWithString:urlstr];
-    NSString *response = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    response = [response stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSLog(@"%@", response);
-    NSArray *ary = [response componentsSeparatedByString:@","];
-    NSLog(@"%@", ary);
-    return ary;
-}
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

@@ -34,4 +34,17 @@
     [alert show];
 }
 
++ (NSArray*)getUserFav
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *urlstr = [NSString stringWithFormat:@"http://www.chensihang.com/iostest/getKeyword.php?username=%@", [ud objectForKey:@"user"]];
+    NSURL *url = [NSURL URLWithString:urlstr];
+    NSString *response = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    response = [response stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSLog(@"%@", response);
+    NSArray *ary = [response componentsSeparatedByString:@","];
+    NSLog(@"%@", ary);
+    return ary;
+}
+
 @end
