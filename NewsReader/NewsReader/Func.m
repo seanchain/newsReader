@@ -17,7 +17,7 @@
     NSString *myRequestString = [NSString stringWithString:postInfo];
     
     // Create Data from request
-    NSData *myRequestData = [NSData dataWithBytes: [myRequestString UTF8String] length: [myRequestString length]];
+    NSData *myRequestData = [myRequestString dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:url]];
     [request setHTTPMethod: @"POST"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
