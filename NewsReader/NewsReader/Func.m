@@ -15,6 +15,7 @@
 + (NSString *)webRequestWith:(NSString *)url and:(NSString*)postInfo
 {
     NSString *myRequestString = [NSString stringWithString:postInfo];
+    NSLog(@"%@", myRequestString);
     
     // Create Data from request
     NSData *myRequestData = [myRequestString dataUsingEncoding:NSUTF8StringEncoding];
@@ -23,8 +24,8 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
     [request setHTTPBody: myRequestData];
     NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
-    // Log Response
     NSString *response = [[NSString alloc] initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
+    NSLog(@"The response is %@", response);
     return response;
 }
 
