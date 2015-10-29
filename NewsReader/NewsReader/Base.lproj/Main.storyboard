@@ -244,7 +244,7 @@
             <objects>
                 <viewController id="KR2-9y-isS" customClass="FindBackPassword" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d5l-iU-wlM" customClass="UIControl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您注册的邮箱号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nxF-ux-dDP">
@@ -362,6 +362,7 @@
                             <action selector="add:" destination="Vj8-mG-vKA" eventType="touchDown" id="9ic-CC-2gP"/>
                         </connections>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="buttonLook" destination="ubX-Cw-W5Z" id="eSb-BD-Jkf"/>
                         <outlet property="textfield" destination="4mX-1D-Dzf" id="2zR-p7-FLJ"/>
@@ -393,7 +394,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-557.5" y="840.5"/>
+            <point key="canvasLocation" x="-472.5" y="833.5"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="yPh-EI-fPG">
@@ -651,6 +652,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SHE-Xh-EsQ"/>
-        <segue reference="LVa-Nx-iyu"/>
+        <segue reference="SLL-7C-D7D"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,7 @@
 #import "TagList.h"
 #import "DWTagList.h"
 #import "Func.h"
+#import "ZuSimpelColor.h"
 
 @interface TagList ()
 
@@ -25,6 +26,7 @@ NSMutableArray *array;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = doubi;
     buttonLook.backgroundColor = [UIColor colorWithRed:0.19 green:0.49 blue:0.92 alpha:1];
     tagList = [[DWTagList alloc] initWithFrame:CGRectMake(20.0f, 86.0f, 320.0f, 300.0f)];
     array = [[NSMutableArray alloc] initWithObjects:@"金融", @"体育", @"生活", @"科技", @"军事", @"社会", nil];
@@ -52,9 +54,6 @@ NSMutableArray *array;
 
 
 - (IBAction)submit:(id)sender {
-    NSLog(@"****%@****", [DWTagList returnSet]);
-    NSSet *set = [DWTagList returnSet];
-    NSLog(@"SET HERE: %@", set);
     NSArray *jsonarr = [NSArray arrayWithObjects:[set allObjects], nil];
     jsonarr = jsonarr[0];
     NSString *final = @"";
@@ -68,6 +67,8 @@ NSMutableArray *array;
     NSLog(@"JSON String Here: %@", final);
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *user = [ud objectForKey:@"user"];
+    NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:set];
+    [ud setObject:dataSave forKey:@"UserPreference"];
     NSLog(@"%@", user);
     NSString *postvars = [NSString stringWithFormat:@"newspref=%@&user=%@", final, user];
     NSLog(@"%@", postvars);

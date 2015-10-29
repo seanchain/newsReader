@@ -30,16 +30,17 @@ NSIndexPath *idxpth;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:NO];
     [self getUserPortraitAsync];
-    NSArray *favstr = [Func getUserFav];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     // Do any additional setup after loading the view, typically from a nib.
     float x = self.view.frame.size.width;
     float y = self.view.frame.size.height;
     toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, y * 0.09, x, y * 0.07)];
     //将来添加获得用户喜好关键词的语句
-    [Func webRequestWith:@"" and:@""];
-    // NSArray *favstr = @[@"全部", @"iOS8", @"Android5.0", @"拜仁慕尼黑", @"iMac 5k"];
-    //关键词对应的都有自己的新闻链接网址，只需要将网址中的内容放到相对应的tableview cell中
-    NSArray *fav = [self transferButtonArray:favstr];
+    NSData *favData = [ud objectForKey:@"UserPreference"];
+    NSMutableSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
+    NSArray *favTemp = [self transferButtonArray:[favSet allObjects]];
+    NSArray *fav = [NSArray arrayWithObjects:@"全部", favTemp, nil];
+    // 然后此时通过异步请求的方式将用户的偏好设置发送给服务器端,然后以后只用刷新就可以更新内容了
     [toolbar setItems:fav animated:YES];
     [toolbar setTintColor:[UIColor whiteColor]];
     [toolbar setBarTintColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
