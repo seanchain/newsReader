@@ -22,7 +22,6 @@
 #define BORDER_WIDTH 1.0f
 
 @implementation DWTagList
-NSMutableSet *set;
 @synthesize view, textArray;
 
 - (id)initWithFrame:(CGRect)frame
@@ -36,6 +35,8 @@ NSMutableSet *set;
 
 - (void)setTags:(NSArray *)array
 {
+    NSLog(@"HERE CHECK: ");
+    NSLog(@"%@", set);
     textArray = [[NSArray alloc] initWithArray:array];
     sizeFit = CGSizeZero;
     [self display];
@@ -83,7 +84,7 @@ NSMutableSet *set;
 
 - (void)display
 {
-    set = [[NSMutableSet alloc] init];
+    set = [[NSMutableSet alloc] initWithSet:set];
     for (UILabel *subview in [self subviews]) {
         [subview removeFromSuperview];
     }
@@ -129,9 +130,27 @@ NSMutableSet *set;
         UITapGestureRecognizer *tapgesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickUILable:)];
         [label addGestureRecognizer:tapgesture];
         label.userInteractionEnabled = YES;
+        if ([set containsObject:text]) {
+            UIImageView *imgview = [self getCheckedImage:label];
+            label.textColor = [UIColor redColor];
+            label.layer.borderColor = [UIColor redColor].CGColor;
+            [label addSubview:imgview];
+        }
         [self addSubview:label];
     }
     sizeFit = CGSizeMake(self.frame.size.width, totalHeight + 1.0f);
+}
+
+- (UIImageView *)getCheckedImage:(UILabel*)la
+{
+    CGSize textSize = [la.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:CGSizeMake(self.frame.size.width, 1500) lineBreakMode:UILineBreakModeWordWrap];
+    float width = textSize.width + 2 * HORIZONTAL_PADDING;
+    float height = textSize.height + 2 * VERTICAL_PADDING;
+    CGRect frame = CGRectMake((width - 5) * 0.88f, (height - 5) * 0.83f, 10, 10);
+    UIImageView *imgview = [[UIImageView alloc] initWithFrame:frame];
+    UIImage *img = [UIImage imageNamed:@"check.png"];
+    imgview.image = img;
+    return imgview;
 }
 
 - (CGSize)fittedSize

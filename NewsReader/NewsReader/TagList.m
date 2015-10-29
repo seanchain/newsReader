@@ -7,11 +7,14 @@
 //
 
 #import "TagList.h"
+#import "DWTagList.h"
 #import "Func.h"
 
 @interface TagList ()
 
 @end
+
+extern NSMutableSet *set;
 
 @implementation TagList
 
@@ -35,9 +38,11 @@ NSMutableArray *array;
 }
 
 - (IBAction)add:(id)sender {
+    NSLog(@"%@", set);
     NSString *str = textfield.text;
-    if (![str isEqualToString:@""]) {
+    if (![str isEqualToString:@""] && ![set containsObject:str]) {
         [array addObject:str];
+        [set addObject:str];
     }
     [tagList setTags:array];
     [self.view addSubview:tagList];
