@@ -36,7 +36,7 @@ NSMutableArray *array;
 
 - (IBAction)add:(id)sender {
     NSString *str = textfield.text;
-    if (str != nil) {
+    if (![str isEqualToString:@""]) {
         [array addObject:str];
     }
     [tagList setTags:array];
