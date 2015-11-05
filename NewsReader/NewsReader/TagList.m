@@ -57,24 +57,27 @@ NSMutableArray *array;
     NSArray *jsonarr = [NSArray arrayWithObjects:[set allObjects], nil];
     jsonarr = jsonarr[0];
     NSString *final = @"";
-    NSLog(@"ARRAY HERE: %@", jsonarr);
-    for (int i = 0; i < [jsonarr count] - 1; i ++) {
-        final = [final stringByAppendingString:jsonarr[i]];
-        final = [final stringByAppendingString:@","];
+    if ([jsonarr count] == 0) {
+        [Func showAlert:@"没有选中任何的关键词"];
     }
     
-    final = [final stringByAppendingString:jsonarr[[jsonarr count] - 1]];
-    NSLog(@"JSON String Here: %@", final);
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSString *user = [ud objectForKey:@"user"];
-    NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:set];
-    [ud setObject:dataSave forKey:@"UserPreference"];
-    NSLog(@"%@", user);
-    NSString *postvars = [NSString stringWithFormat:@"newspref=%@&user=%@", final, user];
-    NSLog(@"%@", postvars);
-    NSString *res = [Func webRequestWith:@"http://www.chensihang.com/iostest/newsPref.php" and:postvars]; //发送保存用户信息的post请求
-    
-    NSLog(@"Respond Here: %@", res);
-    [self performSegueWithIdentifier:@"main" sender:self.view];
+    else {
+        for (int i = 0; i < [jsonarr count] - 1; i ++) {
+            final = [final stringByAppendingString:jsonarr[i]];
+            final = [final stringByAppendingString:@","];
+        }
+        
+        final = [final stringByAppendingString:jsonarr[[jsonarr count] - 1]];
+        NSLog(@"JSON String Here: %@", final);
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        NSString *user = [ud objectForKey:@"user"];
+        NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:set];
+        [ud setObject:dataSave forKey:@"UserPreference"];
+        NSLog(@"%@", user);
+        NSString *postvars = [NSString stringWithFormat:@"newspref=%@&user=%@", final, user];
+        NSLog(@"%@", postvars);
+        // 这个地方通过发送请求初始化用户对于新闻的偏好
+        [self performSegueWithIdentifier:@"main" sender:self.view];
+    }
 }
 @end

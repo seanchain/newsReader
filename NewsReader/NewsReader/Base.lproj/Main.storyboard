@@ -69,7 +69,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Euw-Fg-QJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="446.5" y="1266.5"/>
+            <point key="canvasLocation" x="214.5" y="1286.5"/>
         </scene>
         <!--推荐-->
         <scene sceneID="wg7-f3-ORb">
@@ -237,7 +237,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLN-g3-nd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-642" y="1730"/>
+            <point key="canvasLocation" x="-286.5" y="1699.5"/>
         </scene>
         <!--Find Back Password-->
         <scene sceneID="m3C-RV-Goe">
@@ -371,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5N-Nc-hMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1096.5" y="1712.5"/>
+            <point key="canvasLocation" x="-1190.5" y="1699.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

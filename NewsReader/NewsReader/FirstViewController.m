@@ -12,6 +12,7 @@
 #import "UUColor.h"
 #import "Func.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "ZuSimpelColor.h"
 
 @interface FirstViewController ()
 
@@ -21,15 +22,21 @@
 
 NSArray *newstitle;
 //将来将使用解析新闻链接的方式获得标题
-
+NSString *tapstr;
 UIToolbar *toolbar;
 UITableView *table;
-
+NSMutableDictionary *testdic;
 NSIndexPath *idxpth;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:NO];
     [self getUserPortraitAsync];
+    testdic = [[NSMutableDictionary alloc] init];
+    tapstr = @"全部";
+    // 默认进来的时候是全部的内容
+    
+    // 现在我们开始假设这里有一个字典包含我们需要的一切材料
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     // Do any additional setup after loading the view, typically from a nib.
     float x = self.view.frame.size.width;
@@ -38,29 +45,43 @@ NSIndexPath *idxpth;
     //将来添加获得用户喜好关键词的语句
     NSData *favData = [ud objectForKey:@"UserPreference"];
     NSMutableSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
-    NSArray *favTemp = [self transferButtonArray:[favSet allObjects]];
-    NSArray *fav = [NSArray arrayWithObjects:@"全部", favTemp, nil];
-    // 然后此时通过异步请求的方式将用户的偏好设置发送给服务器端,然后以后只用刷新就可以更新内容了
+    for (NSString *dic in [favSet allObjects]) {
+        [testdic setObject:[[NSMutableArray alloc] init] forKey:dic];
+    }
+    
+    NSLog(@"how about here");
+    // 这里开始获得每个关键词的内容结果
+    
+    for (NSString *key in [favSet allObjects]) {
+        NSMutableArray *subary = [testdic objectForKey:key]; // 数组中的每一个元素就是一个字典，字典中包含每一个新闻的详细内容
+        if ([key isEqualToString:@"体育"]) {
+            subary[0] = @{@"title":@"test1", @"url":@"http://www.whatever.com/1", @"time":@"some time"};
+            subary[1] = @{@"title":@"test2", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
+            subary[2] = @{@"title":@"test3", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
+        }
+        else if ([key isEqualToString:@"社会"]) {
+            subary[0] = @{@"title":@"test4", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
+            subary[1] = @{@"title":@"test5", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
+        }
+        else {
+            subary[0] = @{@"title":@"test6", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
+            subary[1] = @{@"title":@"test7", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
+            subary[2] = @{@"title":@"test8", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
+            subary[3] = @{@"title":@"test9", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
+        }
+    }
+    
+    NSLog(@"TEST DICTIONARY: %@", testdic); // 测试用的列表构建完毕
+    
+    NSArray *fav = [self transferButtonArray:[favSet allObjects]];
     [toolbar setItems:fav animated:YES];
-    [toolbar setTintColor:[UIColor whiteColor]];
     [toolbar setBarTintColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
-    //[toolbar setBackgroundColor:[UIColor greenColor]];
     [self.view addSubview:toolbar];
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, y * 0.16, x, y - y * 0.16) style:UITableViewStylePlain];
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];
-    newstitle = @[@"拜仁1-1憾平矿工", @"苹果加大Apple Watch生产"]; //将来
-    // newstitle = [self getNewsTitle];
 }
-
-- (NSArray *)getNewsTitle
-{
-    NSLog(@"HERE IS THE METHOD THAT WILL GET THE NEWS TITLE IN THE FUTURE");
-    return nil;
-}
-
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -72,36 +93,105 @@ NSIndexPath *idxpth;
     if(cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     NSUInteger rowNo = indexPath.row;
-    cell.textLabel.text = [newstitle objectAtIndex:rowNo];
+    
+    // 重新生成所有的内容
+    NSMutableArray *allContentsAry = [[NSMutableArray alloc] init];
+    for (NSString *key in testdic) {
+        NSMutableArray *subary = [testdic objectForKey:key];
+        for (NSMutableDictionary *dic in subary) {
+            [allContentsAry addObject:dic[@"title"]];
+        }
+    }
+    cell.textLabel.text = [allContentsAry objectAtIndex:rowNo];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.19 green:0.52 blue:0.92 alpha:1];
     cell.textLabel.highlightedTextColor = [UIColor whiteColor];
     //将来加入缩略图显示
     return cell;
 }
+
+
 // 该方法的返回值决定指定分区内包含多少个表格行。
 - (NSInteger)tableView:(UITableView*)tableView
 	numberOfRowsInSection:(NSInteger)section
 {
     // 由于该表格只有一个分区，直接返回books中集合元素个数代表表格的行数
-    return newstitle.count;
+    NSLog(@"这儿的打印纸能不呢吧高被看到-%@", tapstr);
+    NSUInteger count = 0;
+    if ([tapstr isEqualToString:@"全部"]) {
+        for (NSString *key in testdic) {
+            NSMutableArray *ary = [testdic objectForKey:key];
+            count += [ary count];
+        }
+    }
+    else {
+        NSMutableArray *ary = testdic[tapstr];
+        count = [ary count];
+    }
+    NSLog(@"这儿的count为%lu", count);
+    return count;
 }
 
 - (NSArray *)transferButtonArray:(NSArray *)ary
 {
     NSMutableArray *arr = [[NSMutableArray alloc] init];
+    UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"全部" style:UIBarButtonItemStylePlain target:self action:@selector(getDic:)];
+    [allBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:indigo, UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [arr addObject:allBtn];
     for (id str in ary) {
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:str style:UIBarButtonItemStylePlain target:self action:@selector(getNewsURL:)];
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:str style:UIBarButtonItemStylePlain target:self action:@selector(getDic:)];
+        [button setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
         [arr addObject:button];
     }
+    
     return (NSArray *)arr;
 }
 
-- (NSArray *)getNewsURL:(UIBarButtonItem*)sender{
+- (void)getDic:(UIBarButtonItem*)sender{
     NSString *keyword = [sender title];
-    //进行一系列的获取新闻URL的操作并将所得的URL结果以数组的形式过滤
-    NSArray *ary = @[@"http://chensihang/iostest/newsone.html", @"http://chensihang/iostest/newstwo.html"];
-    return ary;
+    tapstr = keyword;
+    NSLog(@"%@", tapstr);
+    for (UIBarButtonItem *item in toolbar.items) {
+        if ([item.title isEqualToString:keyword]) {
+            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:indigo, UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+        }
+        else {
+            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+        }
+    }
+    
+    // 上面点按更换颜色
+    
+    static NSString *cellid = @"cellId";
+    UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:cellid];
+    cell = nil;
+    [table reloadData];
+    
+    NSMutableArray *dataAry = [[NSMutableArray alloc] init];
+    if ([tapstr isEqualToString:@"全部"]) {
+        NSArray *keys = [testdic allKeys];
+        for (NSString *key in keys) {
+            NSMutableArray *ary = testdic[key];
+            for (NSMutableDictionary *dic in ary) {
+                [dataAry addObject:dic];
+            }
+        }
+        for (int i = 0; i < [dataAry count]; i ++) {
+            NSIndexPath *rowNo = [NSIndexPath indexPathForRow:i inSection:0];
+            UITableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
+            cell.textLabel.text = [dataAry objectAtIndex:i][@"title"];
+        }
+    }
+    
+    else {
+        NSMutableArray *testary = testdic[tapstr];
+        for (int i = 0; i < [testary count]; i ++) {
+            NSLog(@"hahaha-%d", i);
+            NSIndexPath *rowNo = [NSIndexPath indexPathForRow:i inSection:0];
+            UITableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
+            cell.textLabel.text = [testary objectAtIndex:i][@"title"];
+        }
+    }
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
