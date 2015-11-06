@@ -31,6 +31,7 @@ NSIndexPath *idxpth;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:NO];
     [self getUserPortraitAsync];
+    // [self getTheWebContent:@"username"];
     testdic = [[NSMutableDictionary alloc] init];
     tapstr = @"全部";
     // 默认进来的时候是全部的内容
@@ -84,6 +85,29 @@ NSIndexPath *idxpth;
 }
 
 
+- (void)getTheWebContent:(NSString*)username
+{
+    // 假设username进行了Web端的传递并获得了对应的JSON，然后将对应的JSON存入了相应的文件中
+    
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"news" ofType:@"plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    [data setObject:@"add some content" forKey:@"c_key"];
+    
+    //获取应用程序沙盒的Documents目录
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *plistPath1 = [paths objectAtIndex:0];
+    
+    //得到完整的文件名
+    NSString *filename=[plistPath1 stringByAppendingPathComponent:@"news.plist"];
+    //输入写入
+    [data writeToFile:filename atomically:YES];
+    
+    //那怎么证明我的数据写入了呢？读出来看看
+    NSMutableDictionary *data1 = [[NSMutableDictionary alloc] initWithContentsOfFile:filename];
+    NSLog(@"The content which has written to the plist file is :%@", data1);
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -116,7 +140,6 @@ NSIndexPath *idxpth;
 	numberOfRowsInSection:(NSInteger)section
 {
     // 由于该表格只有一个分区，直接返回books中集合元素个数代表表格的行数
-    NSLog(@"这儿的打印纸能不呢吧高被看到-%@", tapstr);
     NSUInteger count = 0;
     if ([tapstr isEqualToString:@"全部"]) {
         for (NSString *key in testdic) {
@@ -128,7 +151,6 @@ NSIndexPath *idxpth;
         NSMutableArray *ary = testdic[tapstr];
         count = [ary count];
     }
-    NSLog(@"这儿的count为%lu", count);
     return count;
 }
 
@@ -186,7 +208,6 @@ NSIndexPath *idxpth;
     else {
         NSMutableArray *testary = testdic[tapstr];
         for (int i = 0; i < [testary count]; i ++) {
-            NSLog(@"hahaha-%d", i);
             NSIndexPath *rowNo = [NSIndexPath indexPathForRow:i inSection:0];
             UITableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
             cell.textLabel.text = [testary objectAtIndex:i][@"title"];
