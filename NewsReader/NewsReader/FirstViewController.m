@@ -75,9 +75,48 @@ NSIndexPath *idxpth;
     NSLog(@"TEST DICTIONARY: %@", testdic); // 测试用的列表构建完毕
     
     NSArray *fav = [self transferButtonArray:[favSet allObjects]];
-    [toolbar setItems:fav animated:YES];
-    [toolbar setBarTintColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.frame = toolbar.frame;
+    scrollView.bounds = toolbar.bounds;
+    scrollView.autoresizingMask = toolbar.autoresizingMask;
+    scrollView.showsVerticalScrollIndicator = false;
+    scrollView.showsHorizontalScrollIndicator = false;
     [self.view addSubview:toolbar];
+    UIView *superView = toolbar.superview;
+    [toolbar removeFromSuperview];
+    toolbar.autoresizingMask = UIViewAutoresizingNone;
+    
+    
+    
+    toolbar.frame = CGRectMake(0, 0, x, toolbar.frame.size.height);
+    
+    
+    toolbar.bounds = toolbar.frame;
+    [toolbar setItems:fav];
+    
+    // 获得UIBarButtonItem的宽度总和
+    
+    double total_width = 0.0f;
+    for (UIBarButtonItem *item in fav) {
+        UIView *view = [item valueForKey:@"view"];
+        CGFloat width = view? [view frame].size.width : (CGFloat)0.0;
+        total_width += (width + 16);
+    }
+    NSLog(@"Total Item width are: %lf", total_width);
+    if (total_width > scrollView.frame.size.width) {
+        toolbar.frame = CGRectMake(0, 0, total_width * 1, toolbar.frame.size.height);
+    }
+    
+    scrollView.contentSize = toolbar.frame.size;
+    CGRect scrollViewRect = scrollView.frame;
+    CGRect toolBarRect = toolbar.frame;
+    NSLog(@"%f--%f", scrollViewRect.size.width, toolBarRect.size.width);
+    [scrollView addSubview:toolbar];
+    [superView addSubview:scrollView];
+    
+    
+    [toolbar setBarTintColor:[UIColor colorWithRed:0.8 green:0 blue:0 alpha:1]];
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, y * 0.16, x, y - y * 0.16) style:UITableViewStylePlain];
     table.delegate = self;
     table.dataSource = self;
