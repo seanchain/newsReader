@@ -49,8 +49,6 @@ NSIndexPath *idxpth;
     for (NSString *dic in [favSet allObjects]) {
         [testdic setObject:[[NSMutableArray alloc] init] forKey:dic];
     }
-    
-    NSLog(@"how about here");
     // 这里开始获得每个关键词的内容结果
     
     for (NSString *key in [favSet allObjects]) {

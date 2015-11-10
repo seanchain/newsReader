@@ -23,9 +23,9 @@
     [self.table reloadData];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSData *favData = [ud objectForKey:@"UserPreference"];
-    NSMutableSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
-    NSLog(@"---\n%@---\n", [favSet allObjects]);
-    keywords = (NSMutableArray*)[favSet allObjects];
+    NSArray *results = [[NSKeyedUnarchiver unarchiveObjectWithData:favData] allObjects];
+    keywords = [[NSMutableArray alloc] initWithArray:results];
+    NSLog(@"-\n%@-\n", keywords);
 }
 
 - (IBAction)add:(id)sender {
@@ -107,8 +107,10 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSInteger rowNo = [indexPath row];
+        NSLog(@"Row Number is %lu", rowNo);
+        NSLog(@"The object which is going to be deleted is %@", keywords[rowNo]);
         // 从底层NSArray集合中删除指定数据项
-        [keywords removeObjectAtIndex: rowNo];
+        [keywords removeObjectAtIndex:rowNo];
         // 从UITable程序界面上删除指定表格行。
         [tableView deleteRowsAtIndexPaths:[NSArray
                                            arrayWithObject:indexPath]
