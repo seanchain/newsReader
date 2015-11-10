@@ -18,19 +18,21 @@
 {
     [super viewWillAppear:NO];
     NSLog(@"%@", indexpath);
-    NSArray *ary = [Func getUserFav];
-    NSLog(@"%@", ary);
     self.table.dataSource = self;
     self.table.delegate = self;
     [self.table reloadData];
-    keywords = (NSMutableArray*)ary;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *favData = [ud objectForKey:@"UserPreference"];
+    NSMutableSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
+    NSLog(@"---\n%@---\n", [favSet allObjects]);
+    keywords = (NSMutableArray*)[favSet allObjects];
 }
 
 - (IBAction)add:(id)sender {
     NSLog(@"Click the button!");
-    UIAlertView *inputAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入文件名" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *inputAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入新的关键字名称" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     inputAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [inputAlert textFieldAtIndex:0].placeholder = @"文件名";
+    [inputAlert textFieldAtIndex:0].placeholder = @"关键词";
     [inputAlert show];
 }
 
@@ -106,7 +108,6 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSInteger rowNo = [indexPath row];
         // 从底层NSArray集合中删除指定数据项
-        NSString *deletefilename = [keywords objectAtIndex:rowNo];
         [keywords removeObjectAtIndex: rowNo];
         // 从UITable程序界面上删除指定表格行。
         [tableView deleteRowsAtIndexPaths:[NSArray
@@ -123,6 +124,8 @@
 
 - (void)saveValueToDB
 {
+    NSLog(@"进行服务器端数据的更新");
+    // 这里发送异步请求
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString *str = @"";
     for (int i = 0; i < [keywords count]; i ++) {
