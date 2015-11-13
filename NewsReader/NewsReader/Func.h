@@ -13,4 +13,11 @@
 + (NSString *)webRequestWith:(NSString *)url and:(NSString*)postInfo;
 + (void)showAlert:(NSString *)str;
 + (NSArray *)getUserFav;
++ (NSString*)registerUserInfo:(NSDictionary*)userinfo;
++ (NSString*)getTokenAndValidate:(NSDictionary*)userinfo;
++ (NSString*)setUpKeywords:(NSArray*)keywords And:(NSString*)token;
++ (NSString*)updateKeywords:(NSArray*)keywords And:(NSString*)token;
++ (NSArray*)userNews:(NSString*)token;
++ (NSArray*)recommendNews:(NSString*)token;
++ (NSArray*)getNewsById:(NSString*)newsID and:(NSString*)token;
 @end
