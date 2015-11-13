@@ -83,35 +83,18 @@
 
 - (NSArray*)getDateArray{
     NSMutableArray *dateary = [[NSMutableArray alloc] init];
-    int week = (int)[self getWeekToday];
-    for (int j = week - 4; j <= week; j ++) {
-        int weekday = (j + 7) % 7;
-        switch (weekday) {
-            case 1:
-                [dateary addObject:@"星期一"];
-                break;
-            case 2:
-                [dateary addObject:@"星期二"];
-                break;
-            case 3:
-                [dateary addObject:@"星期三"];
-                break;
-            case 4:
-                [dateary addObject:@"星期四"];
-                break;
-            case 5:
-                [dateary addObject:@"星期五"];
-                break;
-            case 6:
-                [dateary addObject:@"星期六"];
-                break;
-            case 0:
-                [dateary addObject:@"星期日"];
-                break;
-            default:
-                break;
-        }
-    }
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式,这里可以设置成自己需要的格式
+    [dateFormatter setDateFormat:@"MM月dd日"];
+    //用[NSDate date]可以获取系统当前时间
+    NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"%@", currentDateStr);
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*4]]];
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*3]]];
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*2]]];
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24]]];
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate date]]];
+
     return (NSArray*)dateary;
 }
 
