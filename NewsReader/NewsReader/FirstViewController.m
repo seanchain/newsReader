@@ -13,6 +13,7 @@
 #import "Func.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "ZuSimpelColor.h"
+#import "CustomTableViewCell.h"
 
 @interface FirstViewController ()
 
@@ -149,10 +150,12 @@ NSIndexPath *idxpth;
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* cellId = @"cellId";
-    UITableViewCell* cell = [tableView
+    CustomTableViewCell* cell = (CustomTableViewCell*)[tableView
                              dequeueReusableCellWithIdentifier:cellId];
-    if(cell == nil)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    if(cell == nil) {
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
+        cell = [nibArray objectAtIndex:0];
+    }
     NSUInteger rowNo = indexPath.row;
     
     // 重新生成所有的内容
@@ -163,10 +166,10 @@ NSIndexPath *idxpth;
             [allContentsAry addObject:dic[@"title"]];
         }
     }
-    cell.textLabel.text = [allContentsAry objectAtIndex:rowNo];
+    cell.titleLabel.text = [allContentsAry objectAtIndex:rowNo];
+    cell.timeLabel.text = @"日期";
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.19 green:0.52 blue:0.92 alpha:1];
-    cell.textLabel.highlightedTextColor = [UIColor whiteColor];
     //将来加入缩略图显示
     return cell;
 }
@@ -195,11 +198,11 @@ NSIndexPath *idxpth;
 {
     NSMutableArray *arr = [[NSMutableArray alloc] init];
     UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"全部" style:UIBarButtonItemStylePlain target:self action:@selector(getDic:)];
-    [allBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:indigo, UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [allBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:indigo, NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     [arr addObject:allBtn];
     for (id str in ary) {
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:str style:UIBarButtonItemStylePlain target:self action:@selector(getDic:)];
-        [button setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+        [button setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
         [arr addObject:button];
     }
     
@@ -212,17 +215,17 @@ NSIndexPath *idxpth;
     NSLog(@"%@", tapstr);
     for (UIBarButtonItem *item in toolbar.items) {
         if ([item.title isEqualToString:keyword]) {
-            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:indigo, UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:indigo, NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
         }
         else {
-            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
         }
     }
     
     // 上面点按更换颜色
     
     static NSString *cellid = @"cellId";
-    UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:cellid];
+    CustomTableViewCell *cell = [table dequeueReusableCellWithIdentifier:cellid];
     cell = nil;
     [table reloadData];
     
@@ -237,8 +240,9 @@ NSIndexPath *idxpth;
         }
         for (int i = 0; i < [dataAry count]; i ++) {
             NSIndexPath *rowNo = [NSIndexPath indexPathForRow:i inSection:0];
-            UITableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
-            cell.textLabel.text = [dataAry objectAtIndex:i][@"title"];
+            CustomTableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
+            cell.titleLabel.text = [dataAry objectAtIndex:i][@"title"];
+            cell.timeLabel.text = @"日期";
         }
     }
     
@@ -246,8 +250,9 @@ NSIndexPath *idxpth;
         NSMutableArray *testary = testdic[tapstr];
         for (int i = 0; i < [testary count]; i ++) {
             NSIndexPath *rowNo = [NSIndexPath indexPathForRow:i inSection:0];
-            UITableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
-            cell.textLabel.text = [testary objectAtIndex:i][@"title"];
+            CustomTableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
+            cell.titleLabel.text = [testary objectAtIndex:i][@"title"];
+            cell.timeLabel.text = @"日期";
         }
     }
 }
@@ -300,6 +305,12 @@ NSIndexPath *idxpth;
 {
     id destController = segue.destinationViewController;
     [destController setValue:idxpth forKey:@"indexpath"];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell.frame.size.height;
 }
 
 @end
