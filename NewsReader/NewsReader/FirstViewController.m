@@ -43,6 +43,7 @@ NSIndexPath *idxpth;
     // Do any additional setup after loading the view, typically from a nib.
     float x = self.view.frame.size.width;
     float y = self.view.frame.size.height;
+    NSLog(@"高速我iPhone的宽度是%f", x);
     toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, y * 0.09, x, y * 0.07)];
     //将来添加获得用户喜好关键词的语句
     NSData *favData = [ud objectForKey:@"UserPreference"];
@@ -65,7 +66,7 @@ NSIndexPath *idxpth;
         }
         else {
             subary[0] = @{@"title":@"test6", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
-            subary[1] = @{@"title":@"test7", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
+            subary[1] = @{@"title":@"一个稍微长一点的标题测试，测试啊，测试啊，测试啊，测试", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
             subary[2] = @{@"title":@"test8", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
             subary[3] = @{@"title":@"test9", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
         }
