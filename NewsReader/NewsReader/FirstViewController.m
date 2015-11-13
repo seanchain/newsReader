@@ -14,8 +14,11 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "ZuSimpelColor.h"
 #import "CustomTableViewCell.h"
+#import "CBStoreHouseRefreshControl.h"
 
 @interface FirstViewController ()
+
+@property (strong, nonatomic) CBStoreHouseRefreshControl *storeHouseRefreshControl;
 
 @end
 
@@ -121,6 +124,7 @@ NSIndexPath *idxpth;
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];
+    self.storeHouseRefreshControl = [CBStoreHouseRefreshControl attachToScrollView:table target:self refreshAction:@selector(refreshTriggered:) plist:@"csh" color:maroon lineWidth:1.5 dropHeight:80 scale:1 horizontalRandomness:150 reverseLoadingAnimation:YES internalAnimationFactor:0.5];
 }
 
 
@@ -312,6 +316,37 @@ NSIndexPath *idxpth;
 {
     UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     return cell.frame.size.height;
+}
+
+#pragma mark - Notifying refresh control of scrolling
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.storeHouseRefreshControl scrollViewDidScroll];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [self.storeHouseRefreshControl scrollViewDidEndDragging];
+}
+
+#pragma mark - Listening for the user to trigger a refresh
+
+- (void)refreshTriggered:(id)sender
+{
+    [self performSelector:@selector(finishRefreshControl) withObject:nil afterDelay:3 inModes:@[NSRunLoopCommonModes]];
+}
+
+- (void)finishRefreshControl
+{
+    [self.storeHouseRefreshControl finishingLoading];
+//    self.statusFrames = [[self getContent] copy];
+    [table reloadData];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

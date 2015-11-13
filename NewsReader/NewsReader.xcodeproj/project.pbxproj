@@ -27,6 +27,9 @@
 		7726E7241AA0D4F60002532C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7726E7231AA0D4F60002532C /* icon.png */; };
 		7734D5AE1AA2BD6F0072B4A2 /* DWTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7734D5AD1AA2BD6F0072B4A2 /* DWTagList.m */; };
 		7734D5B01AA2BD960072B4A2 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 7734D5AF1AA2BD960072B4A2 /* check.png */; };
+		774490871BF58D320086ED9E /* BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 774490841BF58D320086ED9E /* BarItem.m */; };
+		774490881BF58D320086ED9E /* CBStoreHouseRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 774490861BF58D320086ED9E /* CBStoreHouseRefreshControl.m */; };
+		7744908A1BF58D560086ED9E /* csh.plist in Resources */ = {isa = PBXBuildFile; fileRef = 774490891BF58D560086ED9E /* csh.plist */; };
 		7759DAA01BF56E5700A208F7 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7759DA9F1BF56E5700A208F7 /* CustomTableViewCell.m */; };
 		7759DAA41BF5759A00A208F7 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7759DAA31BF5759A00A208F7 /* CustomTableViewCell.xib */; };
 		7762C41B1ABBEC5B005725B6 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 7762C41A1ABBEC5B005725B6 /* mail.png */; };
@@ -113,6 +116,11 @@
 		7734D5AC1AA2BD6F0072B4A2 /* DWTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTagList.h; sourceTree = "<group>"; };
 		7734D5AD1AA2BD6F0072B4A2 /* DWTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTagList.m; sourceTree = "<group>"; };
 		7734D5AF1AA2BD960072B4A2 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		774490831BF58D320086ED9E /* BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarItem.h; sourceTree = "<group>"; };
+		774490841BF58D320086ED9E /* BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarItem.m; sourceTree = "<group>"; };
+		774490851BF58D320086ED9E /* CBStoreHouseRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBStoreHouseRefreshControl.h; sourceTree = "<group>"; };
+		774490861BF58D320086ED9E /* CBStoreHouseRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBStoreHouseRefreshControl.m; sourceTree = "<group>"; };
+		774490891BF58D560086ED9E /* csh.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = csh.plist; sourceTree = "<group>"; };
 		7759DA9E1BF56E5700A208F7 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		7759DA9F1BF56E5700A208F7 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		7759DAA31BF5759A00A208F7 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
@@ -201,6 +209,11 @@
 			isa = PBXGroup;
 			children = (
 				7759DAA31BF5759A00A208F7 /* CustomTableViewCell.xib */,
+				774490831BF58D320086ED9E /* BarItem.h */,
+				774490841BF58D320086ED9E /* BarItem.m */,
+				774490851BF58D320086ED9E /* CBStoreHouseRefreshControl.h */,
+				774490891BF58D560086ED9E /* csh.plist */,
+				774490861BF58D320086ED9E /* CBStoreHouseRefreshControl.m */,
 				770A736B1A930EC30089A77B /* NewsReader */,
 				770A73881A930EC30089A77B /* NewsReaderTests */,
 				770A736A1A930EC30089A77B /* Products */,
@@ -544,6 +557,7 @@
 				7772090E1ABB36B000ABACED /* loginUser.png in Resources */,
 				77DE056C1AA1A39600D76A60 /* portrait.jpg in Resources */,
 				77C3C3091B14BACB004B12DA /* arrow.png in Resources */,
+				7744908A1BF58D560086ED9E /* csh.plist in Resources */,
 				770A737D1A930EC30089A77B /* Images.xcassets in Resources */,
 				7726E7201AA0D1BB0002532C /* testimg.png in Resources */,
 				7762C41B1ABBEC5B005725B6 /* mail.png in Resources */,
@@ -566,6 +580,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				774490871BF58D320086ED9E /* BarItem.m in Sources */,
 				770A73AA1A93442C0089A77B /* Func.m in Sources */,
 				77CA913C1A9B72C6004B6271 /* UUColor.m in Sources */,
 				7772090B1ABB280000ABACED /* ZuSimpelColor.m in Sources */,
@@ -584,6 +599,7 @@
 				770A73A41A9335CD0089A77B /* SKSplashIcon.m in Sources */,
 				771F4D311AA21805001E1EB4 /* TagList.m in Sources */,
 				77A86B601A939B130002EFDF /* ThirdViewController.m in Sources */,
+				774490881BF58D320086ED9E /* CBStoreHouseRefreshControl.m in Sources */,
 				7734D5AE1AA2BD6F0072B4A2 /* DWTagList.m in Sources */,
 				77DE050D1AA17E1200D76A60 /* AFHTTPRequestOperationManager.m in Sources */,
 				77CA91391A9B72C6004B6271 /* UUBarChart.m in Sources */,

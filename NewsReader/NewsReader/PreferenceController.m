@@ -127,6 +127,10 @@
 - (void)saveValueToDB
 {
     NSLog(@"进行服务器端数据的更新");
+    NSLog(@"此时的keywords为:%@", keywords);
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:keywords];
+    [ud setObject:dataSave forKey:@"UserPreference"];
     // 这里发送异步请求
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString *str = @"";
