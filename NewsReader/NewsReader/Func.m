@@ -132,6 +132,9 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     NSArray *news = [manager syncGET:@"http://too-young.me:8000/user/recommends" parameters:nil operation:NULL error:nil];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    [ud setObject:news forKey:@"news"];
     return news;
 }
 + (NSArray*)recommendNews:(NSString*)token {
@@ -141,47 +144,35 @@
     for (NSDictionary *new in news) {
         [userNews_ids addObject:new[@"id"]];
     }
-    for (NSInteger i = 0; i < [userNews_ids count]; i ++) {
-        NSString *newsid = userNews_ids[i];
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
-        NSString *urlStr = [NSString stringWithFormat:@"http://too-young.me:8000/news/entry/%@/recommend", newsid];
-        [manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSArray *ary = responseObject;
-            for (NSDictionary *post in ary) {
-                if ([recommend_ids count] < 30) {
-                    if (![userNews_ids containsObject:post[@"id"]] && ![recommend_ids containsObject:post[@"id"]]) {
-                        [recommend_ids addObject:post[@"id"]];
-                    }
-                }
-                else
-                    break;
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *path=[paths objectAtIndex:0];
+    NSString *filename=[path stringByAppendingPathComponent:@"recommend5.plist"];
+    NSFileManager* fm = [NSFileManager defaultManager];
+    [fm createFileAtPath:filename contents:nil attributes:nil];
+    for (NSString *news_id in userNews_ids) {
+        NSString *urlStr = [NSString stringWithFormat:@"http://too-young.me:8000/news/entry/%@/recommend", news_id];
+        NSDictionary *res = [manager syncGET:urlStr parameters:nil operation:NULL error:nil][0];
+        if (![userNews_ids containsObject:res[@"id"]] && ![recommend_ids containsObject:res]) {
+            [recommend_ids addObject:res];
+        }
     }
-    NSMutableArray *ret = [[NSMutableArray alloc] init];
-    for (NSString *newsId in recommend_ids) {
-        [ret addObject:[Func getNewsById:newsId and:token]];
-    }
-    return ret;
+    NSLog(@"最后的推荐内容为：%@", recommend_ids);
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    [ud setObject:recommend_ids forKey:@"recommend"];
+    return nil;
 }
 
 + (NSArray*)getNewsById:(NSString*)newsID and:(NSString*)token {
-    __block NSArray* news;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     NSString *url = [NSString stringWithFormat:@"http://too-young.me:8000/news/entry/%@", newsID];
-    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        news = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        news = nil;
-    }];
-    return news;
+    NSArray *ret = [manager syncGET:url parameters:nil operation:NULL error:nil];
+    return ret;
 }
 
 @end

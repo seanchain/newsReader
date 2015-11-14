@@ -95,11 +95,12 @@
                     <navigationItem key="navigationItem" id="M2l-Sk-isc"/>
                     <connections>
                         <outlet property="myTableView" destination="tNQ-bm-Zqn" id="Rr4-UN-dT0"/>
+                        <segue destination="LXU-3z-NLc" kind="push" identifier="secnewscontent" id="CHn-LF-RRk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840.5" y="1266.5"/>
+            <point key="canvasLocation" x="1192.5" y="663.5"/>
         </scene>
         <!--News Content-->
         <scene sceneID="CJd-1u-nyM">
@@ -651,7 +652,8 @@
         <image name="user.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SHE-Xh-EsQ"/>
         <segue reference="SLL-7C-D7D"/>
+        <segue reference="SHE-Xh-EsQ"/>
+        <segue reference="CHn-LF-RRk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -33,17 +33,20 @@ NSIndexPath *idxpth;
 NSArray *news;
 NSMutableSet *favSet;
 NSString *token;
+NSArray *recommend_news;
+NSString *entry_news_id;
 
 - (void)viewDidLoad {
     news = @[];
-    favSet = [[NSMutableSet alloc] init];
+    entry_news_id = @"";
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    favSet = [[NSMutableSet alloc] init];
     NSData *favData = [ud objectForKey:@"UserPreference"];
     favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
     
-    NSString *username = @"ciaomondo38";
-    NSString *email = @"ciaomondo38@163.com";
-    NSString *displayname = @"ciaomondo38";
+    NSString *username = @"ciaomondo94";
+    NSString *email = @"ciaomondo94@163.com";
+    NSString *displayname = @"ciaomondo94";
     NSString *password = @"12345678";
     NSDictionary *res = [Func registerUserInfo:@{@"username":username, @"email":email, @"displayname":displayname, @"password":password}];
     NSLog(@"Result here: %@", res);
@@ -55,6 +58,8 @@ NSString *token;
         [ud setObject:token forKey:@"token"]; // 设置token
         [Func setUpKeywords:[favSet allObjects] And:token];
     }
+    [Func userNews:token];
+    [Func recommendNews:token];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -62,7 +67,21 @@ NSString *token;
     [self getUserPortraitAsync];
     // [self getTheWebContent:@"username"];
     tapstr = @"全部";
-    news = [Func userNews:token];
+    
+    // 尝试创建文件
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *directoryPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [directoryPaths objectAtIndex:0];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YY-MM-dd"];
+    NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", currentDateStr]];
+    if (![fileManager fileExistsAtPath:filePath]) {
+        [fileManager createFileAtPath:filePath contents:nil attributes:nil];
+    }
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    news = [ud objectForKey:@"news"];
     // 默认进来的时候是全部的内容
     
     // 现在我们开始假设这里有一个字典包含我们需要的一切材料
@@ -125,28 +144,7 @@ NSString *token;
 }
 
 
-- (void)getTheWebContent:(NSString*)username
-{
-    // 假设username进行了Web端的传递并获得了对应的JSON，然后将对应的JSON存入了相应的文件中
-    
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"news" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    [data setObject:@"add some content" forKey:@"c_key"];
-    
-    //获取应用程序沙盒的Documents目录
-    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    NSString *plistPath1 = [paths objectAtIndex:0];
-    
-    //得到完整的文件名
-    NSString *filename=[plistPath1 stringByAppendingPathComponent:@"news.plist"];
-    //输入写入
-    [data writeToFile:filename atomically:YES];
-    
-    //那怎么证明我的数据写入了呢？读出来看看
-    NSMutableDictionary *data1 = [[NSMutableDictionary alloc] initWithContentsOfFile:filename];
-    NSLog(@"The content which has written to the plist file is :%@", data1);
-    
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -268,10 +266,44 @@ NSString *token;
     return YES;
 }
 
+- (void)writeToCertainFile:(NSString*)keyword {
+    NSArray *directoryPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [directoryPaths objectAtIndex:0];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YY-MM-dd"];
+    NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", currentDateStr]];
+    NSString *fileString = [NSString stringWithContentsOfFile:filePath usedEncoding:NULL error:nil];
+    NSString *newString = @"";
+    if ([fileString isEqualToString:@""])
+        newString = [NSString stringWithFormat:@"%@", keyword];
+    else
+        newString = [NSString stringWithFormat:@"%@\n%@", fileString, keyword];
+    [newString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     idxpth = indexPath;
+    NSMutableArray *dataAry = [[NSMutableArray alloc] init];
+    if ([tapstr isEqualToString:@"全部"]) {
+        dataAry = (NSMutableArray*)news;
+        entry_news_id = dataAry[idxpth.row][@"id"];
+        [self writeToCertainFile:dataAry[idxpth.row][@"keyword"]];
+    }
+    
+    else {
+        NSMutableArray *contentsAry = [[NSMutableArray alloc] init];
+        for (NSDictionary *new in news) {
+            if ([new[@"keyword"] isEqualToString:tapstr]) {
+                [contentsAry addObject:new];
+            }
+        }
+        entry_news_id = contentsAry[idxpth.row][@"id"];
+        [self writeToCertainFile:contentsAry[idxpth.row][@"keyword"]];
+    }
+
+    
     UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:idxpth];
     if (cell.tag == 0) {
         cell.selected = NO;
@@ -311,7 +343,7 @@ NSString *token;
 {
     id destController = segue.destinationViewController;
     [destController setValue:idxpth forKey:@"indexpath"];
-    [destController setValue:news[idxpth.row][@"id"] forKey:@"newsID"];
+    [destController setValue:entry_news_id forKey:@"newsID"];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

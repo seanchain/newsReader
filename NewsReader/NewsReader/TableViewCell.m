@@ -18,12 +18,15 @@
 
 @implementation TableViewCell
 
+NSMutableDictionary * total_res;
 
+NSMutableArray *resary;
 //获取一个存放种类和对应颜色的
 
 
 - (void)configUI:(NSIndexPath *)indexPath
 {
+    [self getStatistic];
     if (chartView) {
         [chartView removeFromSuperview];
         chartView = nil;
@@ -37,15 +40,70 @@
     [chartView showInView:self.contentView];
 }
 
+
+- (void)getStatistic {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *directoryPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [directoryPaths objectAtIndex:0];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YY-MM-dd"];
+    NSString *today = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *lastday1 = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-24*3600]];
+    NSString *lastday2 = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-24*3600*2]];
+    NSString *lastday3 = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-24*3600*3]];
+    NSString *lastday4 = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-24*3600*4]];
+
+    NSString *todayPath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", today]];
+    NSString *lastdayPath1 = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", lastday1]];
+    NSString *lastdayPath2 = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", lastday2]];
+    NSString *lastdayPath3 = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", lastday3]];
+    NSString *lastdayPath4 = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", lastday4]];
+    NSArray *dayAry = [NSArray arrayWithObjects:todayPath, lastdayPath1, lastdayPath2, lastdayPath3, lastdayPath4, nil];
+    NSMutableDictionary *res = [[NSMutableDictionary alloc] init];
+    total_res = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *favData = [ud objectForKey:@"UserPreference"];
+    NSSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
+    NSArray *fav = [favSet allObjects];
+    resary = [[NSMutableArray alloc] init];
+    for (NSString *keyword in fav) {
+        [res setObject:[NSNumber numberWithInt:0] forKey:keyword];
+        [total_res setObject:[NSNumber numberWithInt:0] forKey:keyword];
+    }
+    for (NSString *dayPath in dayAry) {
+        if ([fileManager fileExistsAtPath:dayPath]) {
+            NSString *fileString = [NSString stringWithContentsOfFile:dayPath usedEncoding:NULL error:nil];
+            NSArray *ary = [fileString componentsSeparatedByString:@"\n"];
+            for (NSString *key in ary) {
+                res[key] = [NSNumber numberWithInt:[res[key] intValue] + 1 ];
+                total_res[key] = [NSNumber numberWithInt:[total_res[key] intValue] + 1];
+            }
+            [resary addObject:res];
+        }
+        else {
+            [resary addObject:@{}];
+        }
+    }
+}
+
 - (NSArray *)getStat{
     //获得数据变化的资料
-    NSArray *ary1 = @[@"22",@"54",@"15",@"30",@"42"];
-    NSArray *ary2 = @[@"76",@"34",@"54",@"23",@"15"];
-    NSArray *ary3 = @[@"23",@"12",@"25",@"55",@"52"];
+    NSMutableArray *ary1 = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [resary count]; i ++) {
+        NSDictionary *dic = resary[i];
+        if ([dic isEqualToDictionary:@{}]) {
+            ary1[i] = @"0";
+        } else {
+            int count = 0;
+            for (NSNumber *number in [dic allValues]) {
+                count += [number intValue];
+            }
+            ary1[i] = [NSString stringWithFormat:@"%d", count];
+        }
+    }
+    
     NSMutableArray *ret = [[NSMutableArray alloc] init];
     [ret addObject:ary1];
-    [ret addObject:ary2];
-    [ret addObject:ary3];
     return (NSArray*)ret;
 }
 
@@ -61,7 +119,10 @@
 
 - (NSArray *)getXNames
 {
-    return @[@"Sports", @"Tech", @"Financial", @"Art", @"Tour"];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *favData = [ud objectForKey:@"UserPreference"];
+    NSSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
+    return [favSet allObjects];
 }
 
 #pragma mark - @required
@@ -89,11 +150,12 @@
     //用[NSDate date]可以获取系统当前时间
     NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
     NSLog(@"%@", currentDateStr);
-    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*4]]];
-    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*3]]];
-    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*2]]];
-    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24]]];
     [dateary addObject:[dateFormatter stringFromDate:[NSDate date]]];
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24]]];
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*2]]];
+
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*3]]];
+    [dateary addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:-3600*24*4]]];
 
     return (NSArray*)dateary;
 }
@@ -101,13 +163,19 @@
 //数值多重数组
 - (NSArray *)UUChart_yValueArray:(UUChart *)chart
 {
-    
-    NSArray *ary2 = @[@"76",@"34",@"54",@"23",@"15"];
-    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *favData = [ud objectForKey:@"UserPreference"];
+    NSSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
+    NSArray *ary= [favSet allObjects];
+    NSMutableArray *ary2 = [[NSMutableArray alloc] init];
+    for (NSString *key in ary) {
+        NSLog(@"int_str: %@", [NSString stringWithFormat:@"%d", [total_res[key] intValue]]);
+        [ary2 addObject:[NSString stringWithFormat:@"%d", [total_res[key] intValue]]];
+    }
     if (path.section==0) {
         return [self getStat];
     }else{
-        return @[ary2];
+        return @[(NSArray*)ary2];
     }
 }
 

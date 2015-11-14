@@ -10,6 +10,7 @@
 #import "TableViewCell.h"
 #import "UUColor.h"
 #import "CustomTableViewCell.h"
+#import "Func.h"
 
 @interface SecondViewController ()
 
@@ -17,12 +18,24 @@
 
 @implementation SecondViewController
 
+NSIndexPath *idxpth;
+NSMutableArray *rec_news;
+
 @synthesize myTableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     myTableView.dataSource = self;
     myTableView.delegate = self;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    rec_news = [ud objectForKey:@"recommend"];
+    for (NSDictionary *ids in rec_news) {
+        NSLog(@"id:%@", ids[@"id"]);
+    }
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,8 +85,8 @@
             NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
             cell = [nibArray objectAtIndex:0];
         }
-        cell.titleLabel.text = @"测试";
-        cell.timeLabel.text = @"时间测试";
+        cell.titleLabel.text = rec_news[indexPath.row][@"title"];
+        cell.timeLabel.text = rec_news[indexPath.row][@"posttime"];
         return cell;
     }
 }
@@ -102,6 +115,44 @@
     label.textColor = UUWhite;
     label.textAlignment = NSTextAlignmentCenter;
     return label;
+}
+
+- (void)writeToCertainFile:(NSString*)keyword {
+    NSArray *directoryPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [directoryPaths objectAtIndex:0];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YY-MM-dd"];
+    NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.txt", currentDateStr]];
+    NSString *fileString = [NSString stringWithContentsOfFile:filePath usedEncoding:NULL error:nil];
+    NSString *newString = @"";
+    if ([fileString isEqualToString:@""])
+        newString = [NSString stringWithFormat:@"%@", keyword];
+    else
+        newString = [NSString stringWithFormat:@"%@\n%@", fileString, keyword];
+    [newString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];    [newString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    idxpth = indexPath;
+    if (indexPath.section == 2) {
+        [self writeToCertainFile:rec_news[idxpth.row][@"keyword"]];
+        UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        if (cell.tag == 0) {
+            cell.selected = NO;
+        }else{
+            [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+        }
+        [self performSegueWithIdentifier:@"secnewscontent" sender:self.view];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    id destController = segue.destinationViewController;
+    [destController setValue:idxpth forKey:@"indexpath"];
+    [destController setValue:rec_news[idxpth.row][@"id"] forKey:@"newsID"];
 }
 
 @end

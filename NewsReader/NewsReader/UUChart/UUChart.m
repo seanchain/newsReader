@@ -39,7 +39,7 @@
 }
 
 - (NSDictionary*)getDic{
-    return @{@"金融——":UUWeiboColor, @"体育——":UUTwitterColor, @"艺术——":UUGreen};
+    return @{@"每日浏览量":UUGreen};
 }
 
 -(void)setUpChart{

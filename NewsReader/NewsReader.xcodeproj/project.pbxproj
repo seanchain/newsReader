@@ -67,7 +67,6 @@
 		77DE05131AA17E1200D76A60 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DE04871AA17E1200D76A60 /* AFURLResponseSerialization.m */; };
 		77DE05141AA17E1200D76A60 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DE04891AA17E1200D76A60 /* AFURLSessionManager.m */; };
 		77DE056C1AA1A39600D76A60 /* portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77DE056B1AA1A39600D76A60 /* portrait.jpg */; };
-		77E06E781BECE43E00F2B177 /* news.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77E06E771BECE43E00F2B177 /* news.plist */; };
 		77ECE3581AA1D7C3008537AB /* FindBackPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 77ECE3571AA1D7C3008537AB /* FindBackPassword.m */; };
 /* End PBXBuildFile section */
 
@@ -185,7 +184,6 @@
 		77DE04881AA17E1200D76A60 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		77DE04891AA17E1200D76A60 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		77DE056B1AA1A39600D76A60 /* portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = portrait.jpg; sourceTree = "<group>"; };
-		77E06E771BECE43E00F2B177 /* news.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = news.plist; sourceTree = "<group>"; };
 		77ECE3561AA1D7C3008537AB /* FindBackPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindBackPassword.h; sourceTree = "<group>"; };
 		77ECE3571AA1D7C3008537AB /* FindBackPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindBackPassword.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -314,7 +312,6 @@
 				770A73741A930EC30089A77B /* FirstViewController.m */,
 				7759DA9E1BF56E5700A208F7 /* CustomTableViewCell.h */,
 				7759DA9F1BF56E5700A208F7 /* CustomTableViewCell.m */,
-				77E06E771BECE43E00F2B177 /* news.plist */,
 				770A73761A930EC30089A77B /* SecondViewController.h */,
 				770A73771A930EC30089A77B /* SecondViewController.m */,
 				77A86B5E1A939B130002EFDF /* ThirdViewController.h */,
@@ -555,7 +552,6 @@
 				77A86B801A942E510002EFDF /* recommend.png in Resources */,
 				77A86BD21A94C14C0002EFDF /* TableViewCell.xib in Resources */,
 				770A73A71A9336A20089A77B /* logo.png in Resources */,
-				77E06E781BECE43E00F2B177 /* news.plist in Resources */,
 				77A86B811A942E510002EFDF /* news.png in Resources */,
 				7726E7241AA0D4F60002532C /* icon.png in Resources */,
 				770A73801A930EC30089A77B /* LaunchScreen.xib in Resources */,

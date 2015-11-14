@@ -23,22 +23,13 @@ UINavigationBar *navigationBar;
     // 此处将要存一个log
     NSString *newsID = self.newsID;
     NSLog(@"The News ID is %@", newsID);
-    NSURL *contentURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://too-young.me:8000/news/entry/%@", newsID]];
-    NSString *content = (NSString*)[NSString stringWithContentsOfURL:contentURL encoding:NSUTF8StringEncoding error:nil];
-    NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
-    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    NSLog(@"%@", json[@"fulltext"]);
-    [web loadHTMLString:json[@"fulltext"] baseURL:nil];
-    //将来会从服务器端获得用户新闻的链接与索引对应关系的字典
-    
-}
-
-- (void)getNews:(NSString *)str
-{
+    NSString *str = [NSString stringWithFormat:@"http://fxckgfw.xyz/news/%@", newsID];
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [web loadRequest:req];
+    //将来会从服务器端获得用户新闻的链接与索引对应关系的字典
 }
+
 
 
 - (void)didReceiveMemoryWarning {
