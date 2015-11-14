@@ -10,6 +10,7 @@
 
 @interface NewsContent : UIViewController
 @property (weak, nonatomic) NSIndexPath* indexpath;
+@property (weak, nonatomic) NSString* newsID;
 @property (weak, nonatomic) IBOutlet UIWebView *web;
 
 @end

@@ -31,37 +31,38 @@ UIToolbar *toolbar;
 UITableView *table;
 NSIndexPath *idxpth;
 NSArray *news;
+NSMutableSet *favSet;
+NSString *token;
+
+- (void)viewDidLoad {
+    news = @[];
+    favSet = [[NSMutableSet alloc] init];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *favData = [ud objectForKey:@"UserPreference"];
+    favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
+    
+    NSString *username = @"ciaomondo38";
+    NSString *email = @"ciaomondo38@163.com";
+    NSString *displayname = @"ciaomondo38";
+    NSString *password = @"12345678";
+    NSDictionary *res = [Func registerUserInfo:@{@"username":username, @"email":email, @"displayname":displayname, @"password":password}];
+    NSLog(@"Result here: %@", res);
+    if (res[@"succeeded"]) {
+        NSString *poststr = [ NSString stringWithFormat:@"username=%@&password=%@&grant_type=password&client_id=hhh&client_secret=hhh", username, password];
+        token = [Func getTokenAndValidate:poststr and:username];
+    }
+    if (token) {
+        [ud setObject:token forKey:@"token"]; // 设置token
+        [Func setUpKeywords:[favSet allObjects] And:token];
+    }
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:NO];
     [self getUserPortraitAsync];
     // [self getTheWebContent:@"username"];
     tapstr = @"全部";
-    news = @[];
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSData *favData = [ud objectForKey:@"UserPreference"];
-    NSMutableSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
-    
-    NSString *username = @"ciaomondo29";
-    NSString *email = @"ciaomondo29@163.com";
-    NSString *displayname = @"ciaomondo29";
-    NSString *password = @"12345678";
-    
-    NSDictionary *res = [Func registerUserInfo:@{@"username":username, @"email":email, @"displayname":displayname, @"password":password}];
-    NSLog(@"Result here: %@", res);
-    if (res[@"succeeded"]) {
-        NSString *poststr = [ NSString stringWithFormat:@"username=%@&password=%@&grant_type=password&client_id=hhh&client_secret=hhh", username, password];
-        NSString *token = [Func getTokenAndValidate:poststr and:username];
-        if (token) {
-            NSString *res = [Func setUpKeywords:[favSet allObjects] And:token];
-            NSLog(@"Setting keywords response: %@", res);
-            news = [Func userNews:token];
-            NSLog(@"GET THE TIME's News: %@", news);
-        }
-    }
-
-    NSLog(@"%@****\n", res);
-    
+    news = [Func userNews:token];
     // 默认进来的时候是全部的内容
     
     // 现在我们开始假设这里有一个字典包含我们需要的一切材料
@@ -310,6 +311,7 @@ NSArray *news;
 {
     id destController = segue.destinationViewController;
     [destController setValue:idxpth forKey:@"indexpath"];
+    [destController setValue:news[idxpth.row][@"id"] forKey:@"newsID"];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

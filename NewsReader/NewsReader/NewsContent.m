@@ -15,18 +15,22 @@
 @implementation NewsContent
 
 @synthesize web;
-NSString *url;
 
 UINavigationBar *navigationBar;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSInteger idx = self.indexpath.row;
+    // 此处将要存一个log
+    NSString *newsID = self.newsID;
+    NSLog(@"The News ID is %@", newsID);
+    NSURL *contentURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://too-young.me:8000/news/entry/%@", newsID]];
+    NSString *content = (NSString*)[NSString stringWithContentsOfURL:contentURL encoding:NSUTF8StringEncoding error:nil];
+    NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
+    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSLog(@"%@", json[@"fulltext"]);
+    [web loadHTMLString:json[@"fulltext"] baseURL:nil];
     //将来会从服务器端获得用户新闻的链接与索引对应关系的字典
-    NSDictionary *dic = [NSDictionary dictionaryWithObjects:@[@"http://chensihang.com/iostest/newsone.html", @"http://chensihang.com/iostest/newstwo.html"] forKeys:@[@"0", @"1"]];
-    url = [dic valueForKey:[NSString stringWithFormat:@"%lu", idx]];
-    NSLog(@"%@", url);
-    [self getNews:url];
+    
 }
 
 - (void)getNews:(NSString *)str
