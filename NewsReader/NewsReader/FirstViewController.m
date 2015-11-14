@@ -38,19 +38,40 @@ NSIndexPath *idxpth;
     // [self getTheWebContent:@"username"];
     testdic = [[NSMutableDictionary alloc] init];
     tapstr = @"全部";
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *favData = [ud objectForKey:@"UserPreference"];
+    NSMutableSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
+    
+    NSString *username = @"ciaomondo25";
+    NSString *email = @"ciaomondo25@163.com";
+    NSString *displayname = @"ciaomondo25";
+    NSString *password = @"12345678";
+    
+    NSDictionary *res = [Func registerUserInfo:@{@"username":username, @"email":email, @"displayname":displayname, @"password":password}];
+    NSLog(@"Result here: %@", res);
+    if (res[@"succeeded"]) {
+        NSString *poststr = [ NSString stringWithFormat:@"username=%@&password=%@&grant_type=password&client_id=hhh&client_secret=hhh", username, password];
+        NSString *token = [Func getTokenAndValidate:poststr and:username];
+        if (token) {
+            NSString *res = [Func setUpKeywords:[favSet allObjects] And:token];
+            NSLog(@"Setting keywords response: %@", res);
+            NSArray* news = [Func userNews:token];
+            NSLog(@"GET THE TIME's News: %@", news);
+        }
+    }
+
+    NSLog(@"%@****\n", res);
+    
     // 默认进来的时候是全部的内容
     
     // 现在我们开始假设这里有一个字典包含我们需要的一切材料
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     // Do any additional setup after loading the view, typically from a nib.
     float x = self.view.frame.size.width;
     float y = self.view.frame.size.height;
-    NSLog(@"高速我iPhone的宽度是%f", x);
     toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, y * 0.09, x, y * 0.07)];
     //将来添加获得用户喜好关键词的语句
-    NSData *favData = [ud objectForKey:@"UserPreference"];
-    NSMutableSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
+
     for (NSString *dic in [favSet allObjects]) {
         [testdic setObject:[[NSMutableArray alloc] init] forKey:dic];
     }

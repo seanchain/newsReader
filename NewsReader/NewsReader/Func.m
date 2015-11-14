@@ -10,6 +10,7 @@
 #import "Func.h"
 #import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
+#import "AFHTTPRequestOperationManager+Synchronous.h"
 
 
 @implementation Func
@@ -26,7 +27,25 @@
     [request setHTTPBody: myRequestData];
     NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
     NSString *response = [[NSString alloc] initWithBytes:[returnData bytes] length:[returnData length] encoding:NSUTF8StringEncoding];
-    NSLog(@"The response is %@", response);
+    return response;
+}
+
++ (NSDictionary *)webJSONRequestWith:(NSString *)url and:(NSString*)postInfo
+{
+    NSString *myRequestString = [NSString stringWithString:postInfo];
+    NSLog(@"%@", myRequestString);
+    
+    // Create Data from request
+    NSData *myRequestData = [myRequestString dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:url]];
+    [request setHTTPMethod: @"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+    [request setHTTPBody: myRequestData];
+    NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
+    NSError* error;
+    NSDictionary* response = [NSJSONSerialization JSONObjectWithData:returnData
+                                                         options:kNilOptions
+                                                           error:&error];
     return response;
 }
 
@@ -49,49 +68,35 @@
     return ary;
 }
 
-+ (NSString*)registerUserInfo:(NSDictionary*)userinfo {
-    __block NSString *responseFromServer = @"";
++ (NSDictionary*)registerUserInfo:(NSDictionary*)userinfo {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = userinfo;
-    [manager POST:@"http://too-young.me:8000/user/register" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        responseFromServer = responseFromServer;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        responseFromServer = nil;
-    }];
-    return responseFromServer;
+    NSDictionary *result = [manager syncPOST:@"http://too-young.me:8000/user/register"
+                           parameters:userinfo
+                            operation:NULL
+                                error:nil];
+    return result;
 }
-+ (NSString*)getTokenAndValidate:(NSDictionary*)userinfo {
-    // 用户获取token
-    __block NSString *token = @"Bearer ";
++ (NSString*)getTokenAndValidate:(NSString*)userinfo and:(NSString*)username{
+//    // 用户获取token
+    NSDictionary *str = (NSDictionary*)[Func webJSONRequestWith:@"http://too-young.me:8000/user/oauth/token" and:userinfo];
+    NSString *token = [NSString stringWithFormat:@"Bearer %@", str[@"access_token"]];
+    NSLog(@"The bearer token is %@", token);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = userinfo;
-    [manager POST:@"http://too-young.me:8000/user/oauth/token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject[@"access_token"]);
-        token = [token stringByAppendingString:responseObject[@"access_token"]];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
-
-    [manager GET:@"http://too-young.me:8000/user/oauth/token_check" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if ([responseObject[@"username"] isEqualToString:userinfo[@"username"]]) {
-            ;
-        }
-        else {
-            token = nil;
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-    return token;
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    NSDictionary *result = [manager syncGET:@"http://too-young.me:8000/user/oauth/token_check"
+                                  parameters:nil
+                                   operation:NULL
+                                       error:nil];
+    if ([result[@"username"] isEqualToString:username])
+        return token;
+    else
+        return nil;
 }
 + (NSString*)setUpKeywords:(NSArray*)keywords And:(NSString*)token{
-    __block NSString *response = @"";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -99,13 +104,7 @@
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     NSDictionary *parameters = @{@"keywords": keywords};
-    [manager POST:@"http://too-young.me:8000/user/keywords" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        response = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        response = nil;
-    }];
+    NSString *response = [manager syncPOST:@"http://too-young.me:8000/user/keywords" parameters:parameters operation:NULL error:nil];
     return response;
 }
 
@@ -128,18 +127,11 @@
     return response;
 }
 + (NSArray*)userNews:(NSString*)token {
-    __block NSArray* news;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
-
-    [manager GET:@"http://too-young.me:8000/user/recommends" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        news = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        news = nil;
-    }];
+    NSArray *news = [manager syncGET:@"http://too-young.me:8000/user/recommends" parameters:nil operation:NULL error:nil];
     return news;
 }
 + (NSArray*)recommendNews:(NSString*)token {

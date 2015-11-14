@@ -37,6 +37,7 @@
 		7772090B1ABB280000ABACED /* ZuSimpelColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7772090A1ABB280000ABACED /* ZuSimpelColor.m */; };
 		7772090E1ABB36B000ABACED /* loginUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772090D1ABB36B000ABACED /* loginUser.png */; };
 		777209101ABB3BE000ABACED /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = 7772090F1ABB3BE000ABACED /* key.png */; };
+		7796EF9A1BF6DCC30094C908 /* AFHTTPRequestOperationManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 7796EF991BF6DCC30094C908 /* AFHTTPRequestOperationManager+Synchronous.m */; };
 		77A86B601A939B130002EFDF /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A86B5F1A939B130002EFDF /* ThirdViewController.m */; };
 		77A86B801A942E510002EFDF /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7D1A942E510002EFDF /* recommend.png */; };
 		77A86B811A942E510002EFDF /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 77A86B7E1A942E510002EFDF /* news.png */; };
@@ -130,6 +131,8 @@
 		7772090A1ABB280000ABACED /* ZuSimpelColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZuSimpelColor.m; sourceTree = "<group>"; };
 		7772090D1ABB36B000ABACED /* loginUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginUser.png; sourceTree = "<group>"; };
 		7772090F1ABB3BE000ABACED /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
+		7796EF981BF6DCC30094C908 /* AFHTTPRequestOperationManager+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperationManager+Synchronous.h"; sourceTree = "<group>"; };
+		7796EF991BF6DCC30094C908 /* AFHTTPRequestOperationManager+Synchronous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperationManager+Synchronous.m"; sourceTree = "<group>"; };
 		77A86B5E1A939B130002EFDF /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		77A86B5F1A939B130002EFDF /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		77A86B7D1A942E510002EFDF /* recommend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommend.png; sourceTree = "<group>"; };
@@ -211,6 +214,8 @@
 				7759DAA31BF5759A00A208F7 /* CustomTableViewCell.xib */,
 				774490831BF58D320086ED9E /* BarItem.h */,
 				774490841BF58D320086ED9E /* BarItem.m */,
+				7796EF981BF6DCC30094C908 /* AFHTTPRequestOperationManager+Synchronous.h */,
+				7796EF991BF6DCC30094C908 /* AFHTTPRequestOperationManager+Synchronous.m */,
 				774490851BF58D320086ED9E /* CBStoreHouseRefreshControl.h */,
 				774490891BF58D560086ED9E /* csh.plist */,
 				774490861BF58D320086ED9E /* CBStoreHouseRefreshControl.m */,
@@ -588,6 +593,7 @@
 				770A73781A930EC30089A77B /* SecondViewController.m in Sources */,
 				77DE05111AA17E1200D76A60 /* AFURLConnectionOperation.m in Sources */,
 				77DE05101AA17E1200D76A60 /* AFSecurityPolicy.m in Sources */,
+				7796EF9A1BF6DCC30094C908 /* AFHTTPRequestOperationManager+Synchronous.m in Sources */,
 				77CA913D1A9B72C6004B6271 /* UULineChart.m in Sources */,
 				77DE050E1AA17E1200D76A60 /* AFHTTPSessionManager.m in Sources */,
 				770A739E1A9328180089A77B /* RegisterController.m in Sources */,
