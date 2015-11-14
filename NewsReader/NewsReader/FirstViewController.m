@@ -29,22 +29,22 @@ NSArray *newstitle;
 NSString *tapstr;
 UIToolbar *toolbar;
 UITableView *table;
-NSMutableDictionary *testdic;
 NSIndexPath *idxpth;
+NSArray *news;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:NO];
     [self getUserPortraitAsync];
     // [self getTheWebContent:@"username"];
-    testdic = [[NSMutableDictionary alloc] init];
     tapstr = @"全部";
+    news = @[];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSData *favData = [ud objectForKey:@"UserPreference"];
     NSMutableSet *favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
     
-    NSString *username = @"ciaomondo25";
-    NSString *email = @"ciaomondo25@163.com";
-    NSString *displayname = @"ciaomondo25";
+    NSString *username = @"ciaomondo29";
+    NSString *email = @"ciaomondo29@163.com";
+    NSString *displayname = @"ciaomondo29";
     NSString *password = @"12345678";
     
     NSDictionary *res = [Func registerUserInfo:@{@"username":username, @"email":email, @"displayname":displayname, @"password":password}];
@@ -55,7 +55,7 @@ NSIndexPath *idxpth;
         if (token) {
             NSString *res = [Func setUpKeywords:[favSet allObjects] And:token];
             NSLog(@"Setting keywords response: %@", res);
-            NSArray* news = [Func userNews:token];
+            news = [Func userNews:token];
             NSLog(@"GET THE TIME's News: %@", news);
         }
     }
@@ -72,31 +72,6 @@ NSIndexPath *idxpth;
     toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, y * 0.09, x, y * 0.07)];
     //将来添加获得用户喜好关键词的语句
 
-    for (NSString *dic in [favSet allObjects]) {
-        [testdic setObject:[[NSMutableArray alloc] init] forKey:dic];
-    }
-    // 这里开始获得每个关键词的内容结果
-    
-    for (NSString *key in [favSet allObjects]) {
-        NSMutableArray *subary = [testdic objectForKey:key]; // 数组中的每一个元素就是一个字典，字典中包含每一个新闻的详细内容
-        if ([key isEqualToString:@"体育"]) {
-            subary[0] = @{@"title":@"test1", @"url":@"http://www.whatever.com/1", @"time":@"some time"};
-            subary[1] = @{@"title":@"test2", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
-            subary[2] = @{@"title":@"test3", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
-        }
-        else if ([key isEqualToString:@"社会"]) {
-            subary[0] = @{@"title":@"test4", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
-            subary[1] = @{@"title":@"test5", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
-        }
-        else {
-            subary[0] = @{@"title":@"test6", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
-            subary[1] = @{@"title":@"一个稍微长一点的标题测试，测试啊，测试啊，测试啊，测试", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
-            subary[2] = @{@"title":@"test8", @"url":@"http://www.whatever.com/2", @"time":@"another time"};
-            subary[3] = @{@"title":@"test9", @"url":@"http://www.whatever.com/3", @"time":@"third time"};
-        }
-    }
-    
-    NSLog(@"TEST DICTIONARY: %@", testdic); // 测试用的列表构建完毕
     
     NSArray *fav = [self transferButtonArray:[favSet allObjects]];
     
@@ -186,14 +161,19 @@ NSIndexPath *idxpth;
     
     // 重新生成所有的内容
     NSMutableArray *allContentsAry = [[NSMutableArray alloc] init];
-    for (NSString *key in testdic) {
-        NSMutableArray *subary = [testdic objectForKey:key];
-        for (NSMutableDictionary *dic in subary) {
-            [allContentsAry addObject:dic[@"title"]];
-        }
+    if ([tapstr isEqualToString:@"全部"]) {
+        cell.titleLabel.text = [news objectAtIndex:rowNo][@"title"];
+        cell.timeLabel.text = [news objectAtIndex:rowNo][@"posttime"];
     }
-    cell.titleLabel.text = [allContentsAry objectAtIndex:rowNo];
-    cell.timeLabel.text = @"日期";
+    else {
+        for (NSDictionary *new in news) {
+            if ([new[@"keyword"] isEqualToString:tapstr]) {
+                [allContentsAry addObject:new];
+            }
+        }
+        cell.titleLabel.text = [allContentsAry objectAtIndex:rowNo][@"title"];
+        cell.timeLabel.text = [allContentsAry objectAtIndex:rowNo][@"posttime"];
+    }
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.19 green:0.52 blue:0.92 alpha:1];
     //将来加入缩略图显示
@@ -208,14 +188,14 @@ NSIndexPath *idxpth;
     // 由于该表格只有一个分区，直接返回books中集合元素个数代表表格的行数
     NSUInteger count = 0;
     if ([tapstr isEqualToString:@"全部"]) {
-        for (NSString *key in testdic) {
-            NSMutableArray *ary = [testdic objectForKey:key];
-            count += [ary count];
-        }
+        count = [news count];
     }
     else {
-        NSMutableArray *ary = testdic[tapstr];
-        count = [ary count];
+        for (NSDictionary *new in news) {
+            if ([new[@"keyword"] isEqualToString:tapstr]) {
+                count += 1;
+            }
+        }
     }
     return count;
 }
@@ -257,28 +237,27 @@ NSIndexPath *idxpth;
     
     NSMutableArray *dataAry = [[NSMutableArray alloc] init];
     if ([tapstr isEqualToString:@"全部"]) {
-        NSArray *keys = [testdic allKeys];
-        for (NSString *key in keys) {
-            NSMutableArray *ary = testdic[key];
-            for (NSMutableDictionary *dic in ary) {
-                [dataAry addObject:dic];
-            }
-        }
+        dataAry = (NSMutableArray*)news;
         for (int i = 0; i < [dataAry count]; i ++) {
             NSIndexPath *rowNo = [NSIndexPath indexPathForRow:i inSection:0];
             CustomTableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
             cell.titleLabel.text = [dataAry objectAtIndex:i][@"title"];
-            cell.timeLabel.text = @"日期";
+            cell.timeLabel.text = [dataAry objectAtIndex:i][@"posttime"];
         }
     }
     
     else {
-        NSMutableArray *testary = testdic[tapstr];
-        for (int i = 0; i < [testary count]; i ++) {
+        NSMutableArray *contentsAry = [[NSMutableArray alloc] init];
+        for (NSDictionary *new in news) {
+            if ([new[@"keyword"] isEqualToString:tapstr]) {
+                [contentsAry addObject:new];
+            }
+        }
+        for (int i = 0; i < [contentsAry count]; i ++) {
             NSIndexPath *rowNo = [NSIndexPath indexPathForRow:i inSection:0];
             CustomTableViewCell *cell = [table cellForRowAtIndexPath:rowNo];
-            cell.titleLabel.text = [testary objectAtIndex:i][@"title"];
-            cell.timeLabel.text = @"日期";
+            cell.titleLabel.text = [contentsAry objectAtIndex:i][@"title"];
+            cell.timeLabel.text = [contentsAry objectAtIndex:i][@"posttime"];
         }
     }
 }
