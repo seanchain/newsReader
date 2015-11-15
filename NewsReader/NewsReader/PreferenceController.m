@@ -131,20 +131,10 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:keywords];
     [ud setObject:dataSave forKey:@"UserPreference"];
-    // 这里发送异步请求
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString *str = @"";
-    for (int i = 0; i < [keywords count]; i ++) {
-        str = [str stringByAppendingString:keywords[i]];
-        str = [str stringByAppendingString:@","];
-    }
-    NSLog(@"%@", str);
-    NSDictionary *params = @{@"ary":str};
-    [manager POST:@"http:www.chensihang.com/iostest/keywordupdate.php" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"RESPONSE: %@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+    NSString *token = [ud valueForKey:@"token"];
+    [Func updateKeywords:keywords And:token];
+    [Func userNews:token];
+    [Func recommendNews:token];
 }
 
 

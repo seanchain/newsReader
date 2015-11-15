@@ -76,6 +76,23 @@ NSMutableArray *array;
         NSLog(@"%@", user);
         NSString *postvars = [NSString stringWithFormat:@"newspref=%@&user=%@", final, user];
         NSLog(@"%@", postvars);
+        
+        NSString *username = [ud valueForKey:@"user"];
+        NSString *email = [ud valueForKey:@"email"];
+        NSString *displayname = [ud valueForKey:@"user"];
+        NSString *password = [ud valueForKey:@"password"];
+        NSDictionary *res = [Func registerUserInfo:@{@"username":username, @"email":email, @"displayname":displayname, @"password":password}];
+        NSLog(@"Result here: %@", res);
+        NSString *token = @"";
+        if (res[@"succeeded"]) {
+            NSString *poststr = [ NSString stringWithFormat:@"username=%@&password=%@&grant_type=password&client_id=hhh&client_secret=hhh", username, password];
+            token = [Func getTokenAndValidate:poststr and:username];
+        }
+        if (token) {
+            [ud setObject:token forKey:@"token"]; // 设置token
+            [Func setUpKeywords:[set allObjects] And:token];
+        }
+        
         // 这个地方通过发送请求初始化用户对于新闻的偏好
         [self performSegueWithIdentifier:@"main" sender:self.view];
     }

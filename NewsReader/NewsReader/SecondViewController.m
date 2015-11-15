@@ -26,16 +26,17 @@ NSMutableArray *rec_news;
     [super viewDidLoad];
     myTableView.dataSource = self;
     myTableView.delegate = self;
+        // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:NO];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     rec_news = [ud objectForKey:@"recommend"];
     for (NSDictionary *ids in rec_news) {
         NSLog(@"id:%@", ids[@"id"]);
     }
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:NO];
+    [myTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

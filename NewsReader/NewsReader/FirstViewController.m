@@ -43,21 +43,7 @@ NSString *entry_news_id;
     favSet = [[NSMutableSet alloc] init];
     NSData *favData = [ud objectForKey:@"UserPreference"];
     favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
-    
-    NSString *username = @"ciaomondo94";
-    NSString *email = @"ciaomondo94@163.com";
-    NSString *displayname = @"ciaomondo94";
-    NSString *password = @"12345678";
-    NSDictionary *res = [Func registerUserInfo:@{@"username":username, @"email":email, @"displayname":displayname, @"password":password}];
-    NSLog(@"Result here: %@", res);
-    if (res[@"succeeded"]) {
-        NSString *poststr = [ NSString stringWithFormat:@"username=%@&password=%@&grant_type=password&client_id=hhh&client_secret=hhh", username, password];
-        token = [Func getTokenAndValidate:poststr and:username];
-    }
-    if (token) {
-        [ud setObject:token forKey:@"token"]; // 设置token
-        [Func setUpKeywords:[favSet allObjects] And:token];
-    }
+    token = [ud valueForKey:@"token"];
     [Func userNews:token];
     [Func recommendNews:token];
 }
@@ -92,7 +78,8 @@ NSString *entry_news_id;
     toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, y * 0.09, x, y * 0.07)];
     //将来添加获得用户喜好关键词的语句
 
-    
+    NSData *favData = [ud objectForKey:@"UserPreference"];
+    favSet = [NSKeyedUnarchiver unarchiveObjectWithData:favData];
     NSArray *fav = [self transferButtonArray:[favSet allObjects]];
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];

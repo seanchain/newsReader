@@ -158,6 +158,12 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:user forKey:@"user"];
         [userDefaults setObject:password forKey:@"password"];
+        NSString *poststr = [ NSString stringWithFormat:@"username=%@&password=%@&grant_type=password&client_id=hhh&client_secret=hhh", user, password];
+        NSString *token = @"";
+        token = [Func getTokenAndValidate:poststr and:user];
+        if (token) {
+            [userDefaults setObject:token forKey:@"token"]; // 设置token
+        }
         [self performSegueWithIdentifier:@"tabbar" sender:self];
     }
     else{

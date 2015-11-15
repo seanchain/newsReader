@@ -109,7 +109,7 @@
 }
 
 + (NSString*)updateKeywords:(NSArray*)keywords And:(NSString*)token {
-    __block NSString *response = @"";
+    NSString *response = @"";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -117,13 +117,7 @@
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     NSDictionary *parameters = @{@"keywords": keywords};
-    [manager PUT:@"http://too-young.me:8000/user/keywords" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        response = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        response = nil;
-    }];
+    response = [manager syncPUT:@"http://too-young.me:8000/user/keywords" parameters:parameters operation:NULL error:nil];
     return response;
 }
 + (NSArray*)userNews:(NSString*)token {

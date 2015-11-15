@@ -113,6 +113,8 @@
         [self uploadPortrait:userid]; //先上传头像文件
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setObject:userid forKey:@"user"];
+        [ud setObject:email forKey:@"email"];
+        [ud setObject:password forKey:@"password"];
         [self performSegueWithIdentifier:@"regbar" sender:self];
     }
     else [Func showAlert:res];
